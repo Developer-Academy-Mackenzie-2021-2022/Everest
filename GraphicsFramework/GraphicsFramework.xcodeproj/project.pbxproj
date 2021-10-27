@@ -46,8 +46,115 @@
 			isa = PBXGroup;
 			children = (
 				C099DA792729DD95004C9322 /* GraphicsFramework.h */,
+				C0EA72AF2729E27D004BCA07 /* FluxoDeCaixa */,
+				C0EA72AE2729E278004BCA07 /* Heatmap */,
+				C0EA72AD2729E272004BCA07 /* Quadrantes */,
+				C0EA72AC2729E253004BCA07 /* Histograma */,
+				C0EA72AB2729E24E004BCA07 /* Velas */,
+				C0EA72AA2729E249004BCA07 /* Radar */,
+				C0EA72A92729E239004BCA07 /* AreasEmpilhadas */,
+				C0EA72A82729E232004BCA07 /* Area */,
+				C0EA72A72729E227004BCA07 /* Castacata */,
+				C0EA72A62729E21D004BCA07 /* Dispersao */,
+				C0EA72A52729E217004BCA07 /* Linhas */,
+				C0EA72A42729E1DA004BCA07 /* Barras */,
+				C0EA72A32729E190004BCA07 /* Setores */,
 			);
 			path = GraphicsFramework;
+			sourceTree = "<group>";
+		};
+		C0EA72A32729E190004BCA07 /* Setores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Setores;
+			path = "Gráfico de Pizza";
+			sourceTree = "<group>";
+		};
+		C0EA72A42729E1DA004BCA07 /* Barras */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Barras;
+			path = "Gráficos de Barras";
+			sourceTree = "<group>";
+		};
+		C0EA72A52729E217004BCA07 /* Linhas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Linhas;
+			sourceTree = "<group>";
+		};
+		C0EA72A62729E21D004BCA07 /* Dispersao */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Dispersao;
+			path = "Dispersão";
+			sourceTree = "<group>";
+		};
+		C0EA72A72729E227004BCA07 /* Castacata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Castacata;
+			sourceTree = "<group>";
+		};
+		C0EA72A82729E232004BCA07 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		C0EA72A92729E239004BCA07 /* AreasEmpilhadas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AreasEmpilhadas;
+			sourceTree = "<group>";
+		};
+		C0EA72AA2729E249004BCA07 /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Radar;
+			sourceTree = "<group>";
+		};
+		C0EA72AB2729E24E004BCA07 /* Velas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Velas;
+			sourceTree = "<group>";
+		};
+		C0EA72AC2729E253004BCA07 /* Histograma */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Histograma;
+			sourceTree = "<group>";
+		};
+		C0EA72AD2729E272004BCA07 /* Quadrantes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quadrantes;
+			sourceTree = "<group>";
+		};
+		C0EA72AE2729E278004BCA07 /* Heatmap */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Heatmap;
+			sourceTree = "<group>";
+		};
+		C0EA72AF2729E27D004BCA07 /* FluxoDeCaixa */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FluxoDeCaixa;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
