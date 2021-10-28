@@ -19,16 +19,76 @@ struct CandlestickChart: View {
                                    CandleStickData(highestTradedPrice: 150,
                                                    lowestTradedPrice: 70,
                                                    openTradedPrice: 90,
-                                                   closeTradedPrice: 150)]
+                                                   closeTradedPrice: 150),
+                                   CandleStickData(highestTradedPrice: 200,
+                                                                                  lowestTradedPrice: 100,
+                                                                                  openTradedPrice: 170,
+                                                                                  closeTradedPrice: 150),
+                                                                  CandleStickData(highestTradedPrice: 100,
+                                                                                  lowestTradedPrice: 0,
+                                                                                  openTradedPrice: 70,
+                                                                                  closeTradedPrice: 50),
+                                                                  CandleStickData(highestTradedPrice: 150,
+                                                                                  lowestTradedPrice: 70,
+                                                                                  openTradedPrice: 90,
+                                                                                  closeTradedPrice: 150),CandleStickData(highestTradedPrice: 200,
+                                                                                                                         lowestTradedPrice: 100,
+                                                                                                                         openTradedPrice: 170,
+                                                                                                                         closeTradedPrice: 150),
+                                                                                                         CandleStickData(highestTradedPrice: 100,
+                                                                                                                         lowestTradedPrice: 0,
+                                                                                                                         openTradedPrice: 70,
+                                                                                                                         closeTradedPrice: 50),
+                                                                                                         CandleStickData(highestTradedPrice: 150,
+                                                                                                                         lowestTradedPrice: 70,
+                                                                                                                         openTradedPrice: 90,
+                                                                                                                         closeTradedPrice: 150),CandleStickData(highestTradedPrice: 200,
+                                                                                                                                                                lowestTradedPrice: 100,
+                                                                                                                                                                openTradedPrice: 170,
+                                                                                                                                                                closeTradedPrice: 150),
+                                                                                                                                                CandleStickData(highestTradedPrice: 100,
+                                                                                                                                                                lowestTradedPrice: 0,
+                                                                                                                                                                openTradedPrice: 70,
+                                                                                                                                                                closeTradedPrice: 50),
+                                                                                                                                                CandleStickData(highestTradedPrice: 150,
+                                                                                                                                                                lowestTradedPrice: 70,
+                                                                                                                                                                openTradedPrice: 90,
+                                                                                                                                                                closeTradedPrice: 150),CandleStickData(highestTradedPrice: 200,
+                                                                                                                                                                                                       lowestTradedPrice: 100,
+                                                                                                                                                                                                       openTradedPrice: 170,
+                                                                                                                                                                                                       closeTradedPrice: 150),
+                                                                                                                                                                                       CandleStickData(highestTradedPrice: 100,
+                                                                                                                                                                                                       lowestTradedPrice: 0,
+                                                                                                                                                                                                       openTradedPrice: 70,
+                                                                                                                                                                                                       closeTradedPrice: 50),
+                                                                                                                                                                                       CandleStickData(highestTradedPrice: 150,
+                                                                                                                                                                                                       lowestTradedPrice: 70,
+                                                                                                                                                                                                       openTradedPrice: 90,
+                                                                                                                                                                                                       closeTradedPrice: 150),CandleStickData(highestTradedPrice: 200,
+                                                                                                                                                                                                                                              lowestTradedPrice: 100,
+                                                                                                                                                                                                                                              openTradedPrice: 170,
+                                                                                                                                                                                                                                              closeTradedPrice: 150),
+                                                                                                                                                                                                                              CandleStickData(highestTradedPrice: 100,
+                                                                                                                                                                                                                                              lowestTradedPrice: 0,
+                                                                                                                                                                                                                                              openTradedPrice: 70,
+                                                                                                                                                                                                                                              closeTradedPrice: 50),
+                                                                                                                                                                                                                              CandleStickData(highestTradedPrice: 150,
+                                                                                                                                                                                                                                              lowestTradedPrice: 70,
+                                                                                                                                                                                                                                              openTradedPrice: 90,
+                                                                                                                                                                                                                                              closeTradedPrice: 150)]
+    
     var body: some View {
         
+        
         GeometryReader { proxy in
-            HStack(alignment: .top) {
-                ForEach(data.indices, id: \.self) { index in
-                    Candlestick(data: data[index])
-                        .offset(x: 0, y: calculateOffsetOfYPosition(proxy.size, data: data[index]))
-                }
-            }
+            ScrollView(.horizontal) {
+                HStack(alignment: .top) {
+                    ForEach(data.indices, id: \.self) { index in
+                        Candlestick(data: data[index])
+                            .position(x: 10, y: calculateOffsetOfYPosition(proxy.size, data: data[index]))
+                    }
+                } .padding(.horizontal, 15)
+            } .frame(maxHeight: .infinity)
         }
     }
     
