@@ -48,6 +48,13 @@ struct DispersionGraphView: View {
                     
                     Spacer()
                     
+                    HStack {
+                        ForEach((1...10).reversed(), id: \.self) {
+                            Text("\($0)")
+                        }
+                    }.padding(.top, 300).padding(.leading, -300)
+
+                    
                 }.padding()
                 
                 
