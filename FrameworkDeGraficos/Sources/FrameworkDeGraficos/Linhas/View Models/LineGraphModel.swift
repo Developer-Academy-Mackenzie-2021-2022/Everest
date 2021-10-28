@@ -9,8 +9,8 @@ import Foundation
 
 class LineGraphModel: ObservableObject {
     
-    var minPoint: CGPoint?
-    var maxPoint: CGPoint?
+    var minPoint: CGPoint = CGPoint(x: Double.greatestFiniteMagnitude, y: Double.greatestFiniteMagnitude)
+    var maxPoint: CGPoint = CGPoint(x: -Double.greatestFiniteMagnitude, y: -Double.greatestFiniteMagnitude)
     var conversionFactor: CGPoint?
     var positiveModifier: CGPoint?
     
@@ -18,36 +18,51 @@ class LineGraphModel: ObservableObject {
         
     }
     
-    
+    // Acha o maior x, maior y, menor x e menor y
     private func updateMinMax(lines: [Line]) {
-        //precisa de:
-            //lines
         
-//        for ..... {
-//
-//        }
+        for line in lines {
+            
+            for point in line.points {
+                if point.x < self.minPoint.x {
+                    self.minPoint.x = point.x
+                }
+                if point.x > self.maxPoint.x {
+                    self.maxPoint.x = point.x
+                }
+                
+                if point.y < self.minPoint.y {
+                    self.minPoint.y = point.y
+                }
+                if point.y > self.maxPoint.y {
+                    self.maxPoint.y = point.y
+                }
+                
+                
+                
+            }
+            
+            
+            
+        }
         
-        self.minPoint = CGPoint(x: 10, y: 10)
-        self.maxPoint = CGPoint(x: 20, y: 20)
     }
     
     //acha o fator de conversao
     private func updateConvertionFactor(viewSize: CGSize) {
-        //precisa de:
-            //tamanho do eixo (max-min)
-            //tamanho da view
+        let axisSize = CGSize(width: abs(maxPoint.x - minPoint.x), height: abs(maxPoint.y - minPoint.y))
     }
     
-    //
-
     
+    
+    // Acha o modificador para deixar o gráfico no primeiro quadrante
     private func updatePositiveModifier() {
-        //precisa de:
-            //ponto mínimo
+        positiveModifier = CGPoint(x: abs(minPoint.x), y: abs(minPoint.y))
+        
     }
     
     
-
+    
     
     internal func updateSpace(lines: [Line], viewSize: CGSize) {
         updateMinMax(lines: lines)
@@ -57,9 +72,9 @@ class LineGraphModel: ObservableObject {
     
     internal func convertGraphSpaceToViewSpace(point: CGPoint) -> CGPoint {
         //precisa de:
-            //quanto precisa somar pra tudo ficar positivo
-            //fator de conversao
-            //multiplica por -1 o y
+        //quanto precisa somar pra tudo ficar positivo
+        //fator de conversao
+        //multiplica por -1 o y
         
         return CGPoint(x: 10, y: 10)
     }
