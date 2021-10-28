@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CandleStickData: Codable {
+public struct CandleStickData: Codable, Hashable {
     let highestTradedPrice: Double
     let lowestTradedPrice: Double
     let openTradedPrice: Double
