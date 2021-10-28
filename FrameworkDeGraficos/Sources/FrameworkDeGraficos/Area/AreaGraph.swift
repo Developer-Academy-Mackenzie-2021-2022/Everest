@@ -16,8 +16,6 @@ public struct AreaGraph: View {
     
     public var body: some View {
         VStack {
-            Text(titulo).font(.title)
-            
             GeometryReader { geometry in
                 let height = geometry.size.height
                 let width = geometry.size.width
@@ -26,6 +24,10 @@ public struct AreaGraph: View {
                 let margin: CGFloat = 25
                 
                 let centerY = height/2
+                
+//                Text(titulo)
+//                    .font(.title)
+//                    .position(x: width/2, y: centerY-100)
                 
                 ForEach(0..<datas.count, id: \.self) {
                     let data = datas[$0]
@@ -56,19 +58,29 @@ public struct AreaGraph: View {
                     
                     ForEach(0..<data.count, id: \.self) {
                         Text(String(format: "%.2f", data[$0])).position(x: espaco*CGFloat($0) + margin, y: centerY-data[$0])
+                        
+                        
+                    }
+                    
+                    ForEach(0..<nomesEixoX.count, id: \.self) {
+                        Text(nomesEixoX[$0]).position(x: espaco*CGFloat($0) + margin, y: centerY + margin)
                     }
                     
                 }
             }
-            
+//            Rectangle()
+//                .fill(colors[0])
+//                .frame(width: 20, height: 20)
+//            Text(legendas[0])
         }
     }
 }
 
+
 struct AreaGraph_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            AreaGraph(datas: [[10.0, 60.0], [70.0, 54.0]])
+            AreaGraph(datas: [[10.0, 60.0, 70.0], [70.0, 54.0, 0.0]], legendas: ["Queimada", "Arvores"], nomeseixoX: ["jan", "fev", "mar"])
         }
     }
 }
