@@ -142,6 +142,7 @@ struct AreaGraph_Previews: PreviewProvider {
         
         ScrollView {
             VStack{
+                AreaGraph(datas: [[10,25,43], [65, 12, 34], [98,43,54], [76,45,12], [102,67,99], [12,43,54], [87,76,54]])
                 AreaGraph()
                 AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 512, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], alturaGrafico: 150)
             }
