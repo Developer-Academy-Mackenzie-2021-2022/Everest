@@ -19,11 +19,13 @@ struct HeatmapGraph: View {
                 VStack{
                     ForEach(matriz[i], id:\.self){
                         matriz in
-                        SquareView(
+
+                      SquareView(
                             quadrado: ModelSquare(valor: matriz, cor: Color.red, largura: 100.0, altura: 100.0),
                             showNumero: showNumero)
 
 //                        Text(String(format: "%.2f", matriz))
+
                     }
                 }
             }
