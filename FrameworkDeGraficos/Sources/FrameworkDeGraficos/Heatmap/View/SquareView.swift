@@ -14,6 +14,7 @@ struct SquareView: View {
         quadrado.retangulo
             .fill(quadrado.cor)
             .frame(width: quadrado.largura, height: quadrado.altura)
+            .brightness(0.5)
     }
 }
 
