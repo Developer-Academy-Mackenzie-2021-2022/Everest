@@ -33,9 +33,9 @@ public struct AreaGraph: View {
                 let espaco: CGFloat = widthSemMargem / quantidade
                 
                 let baseGrafico = centerY+self.alturaGrafico/2
-                let quantidadeY : Int = datas[0].count / 2
+                let quantidadeY : Int = datas[0].count/2
                 
-                Text("\(quantidadeY)")
+                Text(titulo)
                     .font(.title)
                     .position(x: centerX, y: centerY-self.alturaGrafico)
                 
@@ -85,8 +85,8 @@ public struct AreaGraph: View {
                         
                     }
                     ForEach(0..<quantidadeY, id: \.self) {
-                        let espacamento = alturaGrafico/CGFloat(quantidadeY - 1)
-                        Text("\(Int(self.maiorValor)/quantidadeY*$0)").position(x:  marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
+                        let espacamento = alturaGrafico/(CGFloat(quantidadeY) - 1)
+                        Text("\(Int(self.maiorValor)/(quantidadeY-1)*$0)").position(x: marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
                     }
                     
                     HStack {
@@ -123,7 +123,7 @@ public struct AreaGraph: View {
 struct AreaGraph_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            AreaGraph(datas: [[10.0, 60.0, 70.0, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Gráfico top", legendas: ["Queimada", "Árvores"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
+            AreaGraph(datas: [[10.0, 60.0, 512.0, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo", legendas: ["Queimada", "Árvores"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
             //AreaGraph()
         }
     }
