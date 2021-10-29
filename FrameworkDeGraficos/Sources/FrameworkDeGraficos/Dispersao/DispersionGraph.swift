@@ -65,6 +65,15 @@ struct DispersionGraph: View {
                             
                         }
                         Spacer()
+                        
+                        let auxX = points[i].x*scaleX+CGFloat(50)
+                        let auxY = centerY-points[i].y*scaleY
+                        Text(String(format: "%.2f", points[i].x))
+                            .position(x: CGFloat(auxX), y:centerY + CGFloat(10))
+                            .font(.subheadline)
+                        Text(String(format: "%.1f", points[i].y))
+                            .position(x:50-20 , y:CGFloat(auxY))
+                            .font(.subheadline)
                     }
                 }
             }
