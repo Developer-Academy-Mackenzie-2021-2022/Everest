@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct CashFlowView: View {
     
     let data = [25.3, 30, 6, 7.4]
     var body: some View {
@@ -42,8 +42,8 @@ struct SwiftUIView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct CashFlowChartView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        CashFlowView()
     }
 }
