@@ -1,15 +1,14 @@
 import SwiftUI
 
-public struct DispersionGraph {
-            
+
+struct DispersionGraph: View {
+
+    public var points: [CGPoint]
     // Construtor padrão
-    public init(_ data: [[CGFloat]]){
-
+    public init(_ data: [CGPoint]){
+        self.points = data
+        
     }
-}
-
-struct DispersionGraphView: View {
-
         var body: some View {
             let max: CGFloat = 100
             let min = 0
@@ -20,10 +19,6 @@ struct DispersionGraphView: View {
                 let width = geometry.size.width-40
                 
                 let centerY = height/2
-                
-                let datas: [CGFloat] = [2,4,4,8,2,4,4,8,8]
-                
-                let datasy: [CGFloat] = [3,3,8,7,3,3,8,7,7]
                 
                 let colors: [Color] = [Color.green, Color.blue, Color.red]
 
@@ -62,13 +57,13 @@ struct DispersionGraphView: View {
                
                 
                 HStack{
-                    ForEach(0..<datas.count, id: \.self) { i in
-                        //let data = datas[$0]
+                    ForEach(0..<points.count, id: \.self) { i in
+                        
                         VStack{
                             Circle()
                                 .fill(colors[0])
                                 .frame(width: 10, height: 10, alignment: .center)
-                                .position(x: (datas[i]), y: (centerY-datasy[i]))
+                                .position(x: (points[i].x), y: (centerY-points[i].y))
 
 
                         }.padding(-5)
@@ -81,6 +76,13 @@ struct DispersionGraphView: View {
 
 struct DispersionGraph_Previews: PreviewProvider {
     static var previews: some View {
-       DispersionGraphView()
+        let points: [CGPoint] = [CGPoint(x: 2, y: 3),
+                                         CGPoint(x: 4, y: 3),
+                                         CGPoint(x: 4, y: 8),
+                                         CGPoint(x: 8, y: 7),
+                ]
+        
+       DispersionGraph(points)
+        
     }
 }
