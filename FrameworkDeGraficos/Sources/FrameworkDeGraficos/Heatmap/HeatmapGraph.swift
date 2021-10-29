@@ -13,6 +13,7 @@ struct HeatmapGraph: View {
     var showNumero: Bool
     
     var body: some View {
+        let escala = maiorNumeroDaMatriz(matriz: matriz)
         HStack{
             ForEach((0 ..<  matriz.count), id:\.self){ i in
                 
@@ -22,7 +23,7 @@ struct HeatmapGraph: View {
 
                       SquareView(
                             quadrado: ModelSquare(valor: matriz, cor: Color.red, largura: 100.0, altura: 100.0),
-                            showNumero: showNumero)
+                            showNumero: showNumero, escala: escala)
 
 //                        Text(String(format: "%.2f", matriz))
 
@@ -31,10 +32,21 @@ struct HeatmapGraph: View {
             }
         }
     }
+    
+    func maiorNumeroDaMatriz(matriz: [[Double]]) -> Double {
+        var maiorNumero = Double.leastNormalMagnitude
+        for i in matriz{
+            for j in i{
+                maiorNumero = max(maiorNumero, j)
+            }
+        }
+        return maiorNumero
+    }
 }
+
 
 struct HeatmapGraph_Previews: PreviewProvider {
     static var previews: some View {
-        HeatmapGraph(matriz: [[4,9,1], [1,1,1], [1,1,1]], showNumero: true)
+        HeatmapGraph(matriz: [[156,2,3], [5,600,7], [990,10,13]], showNumero: true)
     }
 }

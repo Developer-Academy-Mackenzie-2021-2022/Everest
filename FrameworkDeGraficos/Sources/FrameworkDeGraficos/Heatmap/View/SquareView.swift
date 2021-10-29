@@ -10,23 +10,24 @@ import SwiftUI
 struct SquareView: View {
     var quadrado: ModelSquare
     var showNumero: Bool
-
+    
+    var escala: Double
+    
     var body: some View {
         VStack{
             Text(showNumero ? String(quadrado.valor):"")
-            .frame(width: quadrado.largura, height: quadrado.altura)
+                .frame(width: quadrado.largura, height: quadrado.altura)
         }
         .background(quadrado.cor
-                        .brightness(0.5)
+                        .brightness(((quadrado.valor/escala) - 1 + 0.3) * (-1))
         )
-    }
 }
 
 struct SquareView_Previews: PreviewProvider {
     static var previews: some View {
-        SquareView(
-            quadrado: ModelSquare(valor: 2.0, cor: Color.red, largura: 100.0, altura: 100.0),
-            showNumero: true)
-            .previewLayout(.fixed(width: 100, height: 100))
+        
+        SquareView(quadrado: ModelSquare(valor: 6.0, cor: Color.red, largura: 100.0, altura: 100.0), showNumero: true, escala: 10.0)
+            
+        }
     }
 }
