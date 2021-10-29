@@ -14,11 +14,11 @@ struct SquareView: View {
     var body: some View {
         VStack{
             Text(showNumero ? String(quadrado.valor):"")
-            .frame(width: quadrado.largura, height: quadrado.altura)    
+            .frame(width: quadrado.largura, height: quadrado.altura)
         }
-        .background(quadrado.cor)
-            .brightness(0.5)
-
+        .background(quadrado.cor
+                        .brightness(0.5)
+        )
     }
 }
 
