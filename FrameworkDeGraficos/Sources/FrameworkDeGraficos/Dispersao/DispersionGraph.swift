@@ -5,14 +5,14 @@ public struct DrawImage: View {
     private var scaleX: CGFloat
     private var scaleY: CGFloat
     private var centerY: CGFloat
-    public var colors: [Color]
+    public var color: Color
     
-    public init (points: [CGPoint], scaleX: CGFloat, scaleY: CGFloat, centerY: CGFloat) {
+    public init (points: [CGPoint], scaleX: CGFloat, scaleY: CGFloat, centerY: CGFloat, color: Color) {
         self.points = points
         self.scaleX = scaleX
         self.scaleY = scaleY
         self.centerY = centerY
-        self.colors = [Color.green, Color.blue, Color.red]
+        self.color = color
     }
     
     public var body: some View {
@@ -20,17 +20,17 @@ public struct DrawImage: View {
             ForEach (0..<points.count, id: \.self) { i in
                 VStack {
                     Circle()
-                        .fill(colors[i])
+                        .fill(color)
                         .frame(width: 10, height: 10, alignment: .center)
                         .position(x: CGFloat((points[i].x)*scaleX+50), y: centerY-CGFloat(points[i].y)*scaleY)
                 }
                 
                 let auxX = points[i].x*scaleX+CGFloat(50)
                 let auxY = centerY-points[i].y*scaleY
-                Text(String(format: "%.2f", points[i].x))
+                Text(String(format: "%.0f", points[i].x))
                     .position(x: CGFloat(auxX), y:centerY + CGFloat(10))
                     .font(.subheadline)
-                Text(String(format: "%.1f", points[i].y))
+                Text(String(format: "%.0f", points[i].y))
                     .position(x:50-20 , y:CGFloat(auxY))
                     .font(.subheadline)
             }
@@ -44,6 +44,7 @@ struct DispersionGraph: View {
     public var points: [[CGPoint]]
     public var maxValueX: CGFloat = 0
     public var maxValueY: CGFloat = 0
+    public let colors: [Color] = [Color.green, Color.blue, Color.red]
     
     let max: CGFloat = 200
     let min: CGFloat = 0
@@ -102,18 +103,15 @@ struct DispersionGraph: View {
                         path.addLine(to: CGPoint(x: 50, y: centerY))
                         
                         path.addLine(to: CGPoint(x: width, y: centerY))
-                    }.stroke()
+                    }.stroke(Color.secondary, lineWidth: 3)
                 }
                 
                 ZStack{
                     ForEach(0..<points.count, id: \.self) { i in
-                        //let data = datas[$0]
-                        //let normalizedValuex = 1-((max-points[i].x)/(max-min))
                         
-                        DrawImage(points: points[i], scaleX: scaleX, scaleY: scaleY, centerY: centerY)
+                        DrawImage(points: points[i], scaleX: scaleX, scaleY: scaleY, centerY: centerY, color: colors[i] )
                         
                         Spacer()
-                        
                         
                     }
                 }
