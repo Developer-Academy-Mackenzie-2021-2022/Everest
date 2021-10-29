@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  
-//
-//  Created by Thais da Silva Bras on 29/10/21.
-//
-
 import SwiftUI
 
 struct RadarGridView: View {
