@@ -6,7 +6,8 @@ public struct AreaGraph: View {
     public var legendas: [String]
     public var nomesEixoX: [String]
     public var colors: [Color] = [Color.red, Color.blue, Color.green]
-    public var margin: CGFloat = 25
+    public var marginDireita: CGFloat = 25
+    public var marginEsquerda: CGFloat = 50
     private var maiorValor: CGFloat = 0
     public var alturaGrafico: CGFloat = 200
     
@@ -23,7 +24,7 @@ public struct AreaGraph: View {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 
-                let widthSemMargem: CGFloat = width - 2*margin
+                let widthSemMargem: CGFloat = width - marginEsquerda - marginDireita
                 
                 let centerY:CGFloat = geometry.size.height/2
                 let centerX:CGFloat = width/2
@@ -32,54 +33,60 @@ public struct AreaGraph: View {
                 let espaco: CGFloat = widthSemMargem / quantidade
                 
                 let baseGrafico = centerY+self.alturaGrafico/2
-
-                Text(titulo)
+                let quantidadeY : Int = datas[0].count / 2
+                
+                Text("\(quantidadeY)")
                     .font(.title)
                     .position(x: centerX, y: centerY-self.alturaGrafico)
-
+                
                 ForEach(0..<datas.count, id: \.self) {
                     let data = datas[$0]
                     
-//                    Path { path in
-//                        path.move(to: CGPoint(x: 0, y: centerY))
-//                        path.addLine(to: CGPoint(x: width, y: centerY))
-//
-//                    }.stroke()
+                    //                    Path { path in
+                    //                        path.move(to: CGPoint(x: 0, y: centerY))
+                    //                        path.addLine(to: CGPoint(x: width, y: centerY))
+                    //
+                    //                    }.stroke()
                     
                     Path { path in
-                        path.move(to: CGPoint(x: margin, y: baseGrafico))
-
-
+                        path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico))
+                        
+                        
                         for i in 0..<data.count {
-                            path.addLine(to: CGPoint(x: espaco*CGFloat(i) + margin, y: baseGrafico-convertToScale(valor: data[i])))
+                            path.addLine(to: CGPoint(x: espaco*CGFloat(i) + marginEsquerda, y: baseGrafico-convertToScale(valor: data[i])))
                             if i == data.count-1 {
-                                path.addLine(to: CGPoint(x: widthSemMargem + margin, y: baseGrafico))
+                                path.addLine(to: CGPoint(x: widthSemMargem + marginEsquerda, y: baseGrafico))
                             }
                         }
-
+                        
                     }.fill(colors[$0].opacity(0.3))
-
+                    
                     Path { path in
-
-                        path.move(to: CGPoint(x: margin, y: baseGrafico-convertToScale(valor: data[0])))
-
+                        
+                        path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico-convertToScale(valor: data[0])))
+                        
                         for i in 0..<data.count {
-                            path.addLine(to: CGPoint(x: espaco*CGFloat(i) + margin, y: baseGrafico-convertToScale(valor: data[i])))
+                            path.addLine(to: CGPoint(x: espaco*CGFloat(i) + marginEsquerda, y: baseGrafico-convertToScale(valor: data[i])))
                         }
                     }.stroke(colors[$0],lineWidth: 3)
                     
                     Path { path in
-                        path.move(to: CGPoint(x: margin, y: baseGrafico-alturaGrafico))
-                        path.addLine(to: CGPoint(x: margin, y: baseGrafico))
-                        path.addLine(to: CGPoint(x: widthSemMargem + margin, y: baseGrafico))
+                        path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico-alturaGrafico))
+                        path.addLine(to: CGPoint(x: marginEsquerda, y: baseGrafico))
+                        path.addLine(to: CGPoint(x: widthSemMargem + marginEsquerda, y: baseGrafico))
                     }.stroke(lineWidth: 4)
                     
-//                    ForEach(0..<data.count, id: \.self) {
-//                        Text(String(format: "%.2f", data[$0])).position(x: espaco*CGFloat($0) + margin, y: baseGrafico-convertToScale(valor: data[$0]))
-//                    }
+                    //                    ForEach(0..<data.count, id: \.self) {
+                    //                        Text(String(format: "%.2f", data[$0])).position(x: espaco*CGFloat($0) + margin, y: baseGrafico-convertToScale(valor: data[$0]))
+                    //                    }
                     
                     ForEach(0..<nomesEixoX.count, id: \.self) {
-                        Text(nomesEixoX[$0]).position(x: espaco*CGFloat($0) + margin, y: baseGrafico + margin)
+                        Text(nomesEixoX[$0]).position(x: espaco*CGFloat($0) + marginEsquerda, y: baseGrafico + marginDireita)
+                        
+                    }
+                    ForEach(0..<quantidadeY, id: \.self) {
+                        let espacamento = alturaGrafico/CGFloat(quantidadeY - 1)
+                        Text("\(Int(self.maiorValor)/quantidadeY*$0)").position(x:  marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
                     }
                     
                     HStack {
@@ -113,11 +120,10 @@ public struct AreaGraph: View {
     }
 }
 
-
 struct AreaGraph_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            AreaGraph(datas: [[10.0, 60.0, 70.0, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 120, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 120, 65, 23]], titulo: "Grafico top", legendas: ["Queimada", "Arvores"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
+            AreaGraph(datas: [[10.0, 60.0, 70.0, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Gráfico top", legendas: ["Queimada", "Árvores"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
             //AreaGraph()
         }
     }
