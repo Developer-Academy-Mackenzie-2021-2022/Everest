@@ -10,6 +10,7 @@ import SwiftUI
 struct HeatmapGraph: View {
     
     var matriz: [[Double]]
+    var showNumero: Bool
     
     var body: some View {
         HStack{
@@ -18,11 +19,13 @@ struct HeatmapGraph: View {
                 VStack{
                     ForEach(matriz[i], id:\.self){
                         matriz in
-                            SquareView(quadrado: ModelSquare(valor: matriz, cor: Color.red, largura: 50.0, altura: 50.0))
-                        Text(String(format: "%.2f", matriz))
+                        SquareView(
+                            quadrado: ModelSquare(valor: matriz, cor: Color.red, largura: 100.0, altura: 100.0),
+                            showNumero: showNumero)
+
+//                        Text(String(format: "%.2f", matriz))
                     }
                 }
-                
             }
         }
     }
@@ -30,6 +33,6 @@ struct HeatmapGraph: View {
 
 struct HeatmapGraph_Previews: PreviewProvider {
     static var previews: some View {
-        HeatmapGraph(matriz: [[4,9,1], [1,1,1], [1,1,1]])
+        HeatmapGraph(matriz: [[4,9,1], [1,1,1], [1,1,1]], showNumero: true)
     }
 }
