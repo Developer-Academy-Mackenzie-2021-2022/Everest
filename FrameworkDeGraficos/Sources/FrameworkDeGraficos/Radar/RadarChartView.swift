@@ -1,26 +1,22 @@
 import SwiftUI
 
 struct RadarChartView: View {
-    var data: [Double]
+    var data: [[Double]]
     var size: Double
     var colors: [Color]
     var gridSize: Int
     
     var body: some View {
         ZStack {
-            RadarGridView(gridSize: gridSize, sides: data.count, size: size)
+            // Grid
+            RadarGridView(gridSize: gridSize, sides: data[0].count, size: size)
             
-            // Radar Red
-            Radar(data: data)
-                .stroke(.red)
-                .frame(width: size, height: size, alignment: .center)
-                .rotationEffect(Angle(degrees: -90))
-            
-            // Radar Green
-            Radar(data: data.shuffled())
-                .stroke(.green)
-                .frame(width: size, height: size, alignment: .center)
-                .rotationEffect(Angle(degrees: -90))
+            ForEach(0..<data.count) {
+                Radar(data: data[$0])
+                    .stroke(colors[$0], lineWidth: 3)
+                    .frame(width: size, height: size, alignment: .center)
+                    .rotationEffect(Angle(degrees: -90))
+            }
         }
     }
     
@@ -49,14 +45,10 @@ struct RadarChartView: View {
 
 struct RadarChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let data: [Double] = [
-            0.8,
-            1,
-            0.6,
-            0.7,
-            0.9,
-            0.5
+        let data: [[Double]] = [
+            [0.8, 1, 0.6, 0.7, 0.9, 0.5],
+            [0.3, 0.4, 0.1, 0.7, 0.3, 0.8]
         ]
-        RadarChartView(data: data, size: 100, colors: [Color.red], gridSize: 5)
+        RadarChartView(data: data, size: 100, colors: [.red, .blue], gridSize: 4)
     }
 }
