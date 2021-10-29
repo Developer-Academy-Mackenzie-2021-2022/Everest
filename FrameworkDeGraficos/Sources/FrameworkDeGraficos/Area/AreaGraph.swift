@@ -5,17 +5,23 @@ public struct AreaGraph: View {
     public var titulo: String
     public var legendas: [String]
     public var nomesEixoX: [String]
-    public var colors: [Color] = [Color.red, Color.blue, Color.green]
-    public var marginDireita: CGFloat = 25
-    public var marginEsquerda: CGFloat = 50
+    public var colors: [Color]
+    public var marginDireita: CGFloat
+    public var marginEsquerda: CGFloat
     private var maiorValor: CGFloat = 0
-    public var alturaGrafico: CGFloat = 200
+    public var alturaGrafico: CGFloat
+    let quantidadeY : Int
     
-    public init(datas: [[CGFloat]] = [[10.0,100.0,15.0]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2"]) {
+    public init(datas: [[CGFloat]] = [[100, 60.0, 117, 54, 56 ,13, 216, 543]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2"], colors: [Color] = [Color.red, Color.blue, Color.green], marginDireita: CGFloat = 25, marginEsquerda: CGFloat = 50, alturaGrafico: CGFloat = 200, quantidadeY: Int = 5) {
         self.datas = datas
         self.titulo = titulo
         self.legendas = legendas
         self.nomesEixoX = nomeseixoX
+        self.colors = colors
+        self.marginDireita = marginDireita
+        self.marginEsquerda = marginEsquerda
+        self.alturaGrafico = alturaGrafico
+        self.quantidadeY = quantidadeY
         self.maiorValor = acharMaiorValor()
     }
     
@@ -33,17 +39,21 @@ public struct AreaGraph: View {
                 let espaco: CGFloat = widthSemMargem / quantidade
                 
                 let baseGrafico = centerY+self.alturaGrafico/2
-                let quantidadeY : Int = datas[0].count/2
                 
+                
+                
+                // Titulo do gráfico
                 Text(titulo)
                     .font(.headline)
                     .multilineTextAlignment(.center)
                     .position(x: centerX, y: centerY-self.alturaGrafico)
                 
+                
+                // Loop para cada array de dados
                 ForEach(0..<datas.count, id: \.self) {
                     let data = datas[$0]
 
-                    
+                    // Desenho da forma preenchida
                     Path { path in
                         path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico))
                         
@@ -57,6 +67,7 @@ public struct AreaGraph: View {
                         
                     }.fill(colors[$0].opacity(0.3))
                     
+                    //Desenho do contorno mais escuro da area
                     Path { path in
                         
                         path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico-convertToScale(valor: data[0])))
@@ -66,6 +77,7 @@ public struct AreaGraph: View {
                         }
                     }.stroke(colors[$0],lineWidth: 3)
                     
+                    // Eixo X e Eixo Y
                     Path { path in
                         path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico-alturaGrafico))
                         path.addLine(to: CGPoint(x: marginEsquerda, y: baseGrafico))
@@ -76,17 +88,21 @@ public struct AreaGraph: View {
                     //                        Text(String(format: "%.2f", data[$0])).position(x: espaco*CGFloat($0) + margin, y: baseGrafico-convertToScale(valor: data[$0]))
                     //                    }
                     
+                    // Desenho dos nomes do eixoX
                     ForEach(0..<nomesEixoX.count, id: \.self) {
                         Text(nomesEixoX[$0]).position(x: espaco*CGFloat($0) + marginEsquerda, y: baseGrafico + marginDireita)
                             .font(.caption)
                         
                     }
-                    ForEach(0..<quantidadeY, id: \.self) {
-                        let espacamento = alturaGrafico/(CGFloat(quantidadeY) - 1)
-                        Text("\(Int(self.maiorValor)/(quantidadeY-1)*$0)").position(x: marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
+                    
+                    // Desenho dos valores no eixo Y
+                    ForEach(0...quantidadeY, id: \.self) {
+                        let espacamento: CGFloat = alturaGrafico/CGFloat(quantidadeY)
+                        Text("\(Int(self.maiorValor)/quantidadeY*$0)").position(x: marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
                             .font(.caption)
                     }
                     
+                    // Desenho das legendas
                     HStack {
                         ForEach(0..<legendas.count, id: \.self) {
                             Rectangle()
@@ -102,6 +118,7 @@ public struct AreaGraph: View {
         }
     }
     
+    // Funcao para achar o maior valor entre os dados
     mutating func acharMaiorValor() -> CGFloat {
         var maior: CGFloat = 0
         for data in datas {
@@ -114,6 +131,7 @@ public struct AreaGraph: View {
         return maior
     }
     
+    // Funcao de regra de 3 para fazer o maior valor ser o 100% e o resto em relacao
     func convertToScale(valor: CGFloat) -> CGFloat {
         return valor * alturaGrafico / maiorValor
     }
@@ -121,9 +139,12 @@ public struct AreaGraph: View {
 
 struct AreaGraph_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
-            //AreaGraph()
+        
+        ScrollView {
+            VStack{
+                AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 512, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
+                AreaGraph()
+            }
         }
     }
 }
