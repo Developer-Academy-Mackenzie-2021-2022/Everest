@@ -36,17 +36,13 @@ public struct AreaGraph: View {
                 let quantidadeY : Int = datas[0].count/2
                 
                 Text(titulo)
-                    .font(.title)
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
                     .position(x: centerX, y: centerY-self.alturaGrafico)
                 
                 ForEach(0..<datas.count, id: \.self) {
                     let data = datas[$0]
-                    
-                    //                    Path { path in
-                    //                        path.move(to: CGPoint(x: 0, y: centerY))
-                    //                        path.addLine(to: CGPoint(x: width, y: centerY))
-                    //
-                    //                    }.stroke()
+
                     
                     Path { path in
                         path.move(to: CGPoint(x: marginEsquerda, y: baseGrafico))
@@ -82,21 +78,24 @@ public struct AreaGraph: View {
                     
                     ForEach(0..<nomesEixoX.count, id: \.self) {
                         Text(nomesEixoX[$0]).position(x: espaco*CGFloat($0) + marginEsquerda, y: baseGrafico + marginDireita)
+                            .font(.caption)
                         
                     }
                     ForEach(0..<quantidadeY, id: \.self) {
                         let espacamento = alturaGrafico/(CGFloat(quantidadeY) - 1)
                         Text("\(Int(self.maiorValor)/(quantidadeY-1)*$0)").position(x: marginDireita, y: baseGrafico - (espacamento * CGFloat($0)))
+                            .font(.caption)
                     }
                     
                     HStack {
-                        HStack {
+                        ForEach(0..<legendas.count, id: \.self) {
                             Rectangle()
-                                .fill(colors[0])
-                                .frame(width: 20, height: 20)
-                            Text(legendas[0])
+                                .fill(colors[$0])
+                                .frame(width: 10, height: 10)
+                            Text(legendas[$0]).font(.subheadline)
                         }
                     }.position(x: centerX, y: centerY+self.alturaGrafico)
+                    
                     
                 }
             }.frame(height: self.alturaGrafico*2.25)
@@ -123,7 +122,7 @@ public struct AreaGraph: View {
 struct AreaGraph_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            AreaGraph(datas: [[10.0, 60.0, 512.0, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo", legendas: ["Queimada", "Árvores"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
+            AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, 100, 23, 54], [70.0, 54.0, 0.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 0.0, 43, 54, 100, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"])
             //AreaGraph()
         }
     }
