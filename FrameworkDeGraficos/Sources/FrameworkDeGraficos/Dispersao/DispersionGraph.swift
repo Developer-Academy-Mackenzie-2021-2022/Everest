@@ -7,8 +7,8 @@ struct DispersionGraph: View {
     public var maxValueX: CGFloat = 0
     public var maxValueY: CGFloat = 0
     
-    let max: CGFloat = 100
-    let min = 0
+    let max: CGFloat = 200
+    let min: CGFloat = 0
 
     public mutating func setScale(data: [CGPoint]){
         self.maxValueX = data.map {$0.x}.max() ?? CGFloat(0)
@@ -38,15 +38,17 @@ struct DispersionGraph: View {
                 
                 ZStack(alignment: .leading){
                     Text("Eixo Y")
-                        .position(x: 30, y: centerY-max-10)
+                        .position(x: 50+20, y: centerY-max-10)
+                        .font(.subheadline)
                     Text("Eixo X")
-                        .position(x: width+10, y: centerY+10)
+                        .position(x: width, y: centerY-20)
+                        .font(.subheadline)
                     Path { path in
-                        path.move(to: CGPoint(x: 30, y: centerY-max))
+                        path.move(to: CGPoint(x: 50, y: centerY-max))
                         
-                        path.addLine(to: CGPoint(x: 30, y: centerY))
+                        path.addLine(to: CGPoint(x: 50, y: centerY))
                         
-                        path.addLine(to: CGPoint(x: width+10, y: centerY))
+                        path.addLine(to: CGPoint(x: width, y: centerY))
                     }.stroke()
                 }
                 
@@ -59,7 +61,7 @@ struct DispersionGraph: View {
                             Circle()
                                 .fill(Color.blue)
                                 .frame(width: 10, height: 10, alignment: .center)
-                                .position(x: CGFloat((points[i].x)*scaleX+30), y: centerY-CGFloat(points[i].y)*scaleY)
+                                .position(x: CGFloat((points[i].x)*scaleX+50), y: centerY-CGFloat(points[i].y)*scaleY)
                             
                         }
                         Spacer()
