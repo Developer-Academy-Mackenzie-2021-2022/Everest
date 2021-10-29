@@ -1,41 +1,18 @@
 import SwiftUI
-import XCTest
 
-// Models
-
-//enum Asset {
-   // case equity, cash, bond, realEstate
-// }
-
-
-struct AssetAllocation {
-  //  let asset: Asset
-    let percentage: Double
-    let description: String
-    let color: Color
-    let value: String
-}
-
-//ViewModels
+////ViewModels
 final class PieChartViewModel: ObservableObject {
- /*   @Published var data: [AssetAllocation] = [
-        AssetAllocation(percentage: 0.25, description: "Desmatamento", color: .blue, value: "25%"),
-        AssetAllocation(percentage: 0.25, description: "Poluição", color: .gray, value: "25%"),
-        AssetAllocation(percentage: 0.25, description: "    Combustíveis \n    Fósseis", color: .red, value: "25%"),
-        AssetAllocation(percentage: 0.25, description: "Matriz \nEnergética", color: .green, value: "25%"),
-    ]
-*/
-    @Published var data: [Double] = [
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-    ]
-        
-    
+
+    init(data: [Double], label:[String], cor:[Color]){
+        self.data = data
+        self.label = label
+        self.cor = cor
+    }
+    var data: [Double] = []
+    var label: [String] = []
+    var cor: [Color] = []
     
 }
-
 
 // Views
 struct PieceOfPie: Shape {
@@ -56,11 +33,8 @@ struct PieceOfPie: Shape {
 }
 
 struct PieChart: View {
-    @ObservedObject var viewModel = PieChartViewModel()
-    var data: [Double]
-//    init(data: [AssetAllocation]) {
-//        viewModel.data = data
-//    }
+    @ObservedObject var viewModel = PieChartViewModel(data: [0.1, 0.3, 0.4, 0.2], label: ["oi", "th", "po", "hi"], cor: [.blue, .red, .yellow, .gray])
+   
     
     var body: some View {
         ZStack {
@@ -72,14 +46,14 @@ struct PieChart: View {
                 viewModel.data.prefix(index).map
                 { $0 }.reduce(0, +) *
                 360
-               // PieceOfPie(startDegree: 0, endDegree: 90).fill(.orange)
-               // PieceOfPie(startDegree: 90, endDegree: 180).fill(.blue)
+          
                 ZStack {
                     PieceOfPie(startDegree: lastDegree, endDegree: lastDegree + currentEndDegree)
-                        .fill(Color(.red))
+                        .fill(viewModel.cor[index])
+                    
                     
                     GeometryReader { geometry in
-                        Text(currentData.description).font(.custom("Avenir", size: 17))
+                        Text(viewModel.label[index]).font(.custom("System", size: 17))
                             .foregroundColor(.black)
                             .position(getLabelCoordinate(in: geometry.size, for: lastDegree + (currentEndDegree / 2)))
                         
@@ -110,19 +84,28 @@ struct PieChart: View {
 
 struct ContentView: View {
     var body: some View {
-    
-        VStack(alignment: .trailing) {
-            PieChart(data: <#T##[Double]#>)
-            Text(" Gráfico de Setores")
-            .font(.title)
+//        NavigationView{
+//            ScrollView
+//        }
+        VStack(alignment: .leading) {
+            Text("Gráfico de Setores").font(.largeTitle)
+                .padding()
+            Text("Subtitulo").font(.title)
+            // é title1 mas não tem no .font
+          
+            
+            PieChart()
+                
+            
     }
-    
+//        .navigationTitle("Gráfico de Setores")
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-          //  .frame(width: 300, height: 300, alignment: .center)
+//
+        
     }
 }
 /*public struct SectorGraph {
