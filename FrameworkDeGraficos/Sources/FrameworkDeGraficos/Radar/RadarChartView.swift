@@ -4,22 +4,11 @@ struct RadarChartView: View {
     var data: [Double]
     var size: Double
     var colors: [Color]
+    var gridSize: Int
     
     var body: some View {
         ZStack {
-            // Grid
-            RegularPolygon(sides: data.count, size: size)
-                .stroke()
-                .rotationEffect(Angle(degrees: -90))
-            RegularPolygon(sides: data.count, size: size*3/4)
-                .stroke()
-                .rotationEffect(Angle(degrees: -90))
-            RegularPolygon(sides: data.count, size: size/2)
-                .stroke()
-                .rotationEffect(Angle(degrees: -90))
-            RegularPolygon(sides: data.count, size: size/4)
-                .stroke()
-                .rotationEffect(Angle(degrees: -90))
+            RadarGridView(gridSize: gridSize, sides: data.count, size: size)
             
             // Radar Red
             Radar(data: data)
@@ -68,6 +57,6 @@ struct RadarChartView_Previews: PreviewProvider {
             0.9,
             0.5
         ]
-        RadarChartView(data: data, size: 100, colors: [Color.red])
+        RadarChartView(data: data, size: 100, colors: [Color.red], gridSize: 5)
     }
 }
