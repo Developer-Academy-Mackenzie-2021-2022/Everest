@@ -5,14 +5,22 @@ public struct DrawImage: View {
     private var scaleX: CGFloat
     private var scaleY: CGFloat
     private var centerY: CGFloat
+    private var minx: CGFloat
+    private var miny: CGFloat
     public var color: Color
     
-    public init (points: [CGPoint], scaleX: CGFloat, scaleY: CGFloat, centerY: CGFloat, color: Color) {
+    
+    public init (points: [CGPoint], scaleX: CGFloat, scaleY: CGFloat, centerY: CGFloat, color: Color, minx: CGFloat, miny: CGFloat) {
         self.points = points
         self.scaleX = scaleX
         self.scaleY = scaleY
         self.centerY = centerY
         self.color = color
+        
+        self.minx = minx
+        self.miny = miny
+        
+        
     }
     
     public var body: some View {
@@ -22,20 +30,10 @@ public struct DrawImage: View {
                     Circle()
                         .fill(color)
                         .frame(width: 10, height: 10, alignment: .center)
-                        .position(x: CGFloat((points[i].x)*scaleX+50), y: centerY-CGFloat(points[i].y)*scaleY)
+                        .position(x: CGFloat((points[i].x - minx)*scaleX+50), y: centerY-CGFloat(points[i].y-miny)*scaleY)
                 }
-                
-                let auxX = points[i].x*scaleX+CGFloat(50)
-                let auxY = centerY-points[i].y*scaleY
-                Text(String(format: "%.0f", points[i].x))
-                    .position(x: CGFloat(auxX), y:centerY + CGFloat(10))
-                    .font(.subheadline)
-                Text(String(format: "%.0f", points[i].y))
-                    .position(x:50-20 , y:CGFloat(auxY))
-                    .font(.subheadline)
             }
         }
-
     }
 }
 
@@ -43,7 +41,13 @@ struct DispersionGraph: View {
 
     public var points: [[CGPoint]]
     public var maxValueX: CGFloat = 0
+    public var minValueX: CGFloat = 0
+
     public var maxValueY: CGFloat = 0
+    public var minValueY: CGFloat = 0
+    
+    public var title: String = "Título do gráfico"
+
     public let colors: [Color] = [Color.green, Color.blue, Color.red]
     
     let max: CGFloat = 200
@@ -51,27 +55,38 @@ struct DispersionGraph: View {
     
     
     public mutating func setScale(data: [[CGPoint]]){
+        self.maxValueX = data[0].map({$0.x}).max() ?? CGFloat(0)
+        self.maxValueY = data[0].map({$0.y}).max() ?? CGFloat(0)
+        
+        self.minValueX = data[0].map({$0.x}).min() ?? CGFloat(0)
+        self.minValueY = data[0].map({$0.y}).min() ?? CGFloat(0)
+        
         for i in 0..<data.count {
+            let maxx = data[i].map({$0.x}).max() ?? CGFloat(0)
+            let maxy = data[i].map({$0.y}).max() ?? CGFloat(0)
+            
+            let minx = data[i].map({$0.x}).min() ?? CGFloat(0)
+            let miny = data[i].map({$0.y}).min() ?? CGFloat(0)
+            
             if i > 0 {
-                if self.maxValueX < data[i].map {$0.x}.max() ?? CGFloat(0) {
-                    self.maxValueX = data[i].map {$0.x}.max() ?? CGFloat(0)
-                }
+                if self.maxValueX < maxx {self.maxValueX = maxx}
                 
-                if self.maxValueY < data[i].map {$0.y}.max() ?? CGFloat(0) {
-                    self.maxValueY = data[i].map {$0.y}.max() ?? CGFloat(0)
-                }
+                if self.maxValueY < maxy {self.maxValueY = maxy}
+                
+                if self.minValueX > minx {self.minValueX = minx}
+                
+                if self.minValueY > miny {self.minValueY = miny}
             }
-            
-            else {
-                self.maxValueX = data[i].map {$0.x}.max() ?? CGFloat(0)
-                self.maxValueY = data[i].map {$0.y}.max() ?? CGFloat(0)
-            }
-            
         }
+        ///se nao houverem valores negativos no grafico teremos a origem em 0,0
+        if (self.minValueX>0){self.minValueX = 0}
+        if (self.minValueY>0){self.minValueY = 0}
         
     }
     
-    // Construtor padrão
+    ///funcao para mudar o titulo da funcao
+    
+    /// Construtor padrão
     public init(_ data: [[CGPoint]]){
         self.points = data
         //setar a escala correta nos pontos
@@ -86,51 +101,67 @@ struct DispersionGraph: View {
                 
                 let centerY = height/2
                 
-                let scaleY = max/(maxValueY)
-                let scaleX = (centerY-max)/(maxValueX)
-
+                let scaleY = max/(maxValueY-minValueY)
+                let scaleX = (width-(max/2))/(maxValueX-minValueX)
                 
-                ZStack(alignment: .leading){
-                    Text("Eixo Y")
-                        .position(x: 50+20, y: centerY-max-10)
-                        .font(.subheadline)
-                    Text("Eixo X")
-                        .position(x: width, y: centerY-20)
-                        .font(.subheadline)
-                    Path { path in
-                        path.move(to: CGPoint(x: 50, y: centerY-max))
-                        
-                        path.addLine(to: CGPoint(x: 50, y: centerY))
-                        
-                        path.addLine(to: CGPoint(x: width, y: centerY))
-                    }.stroke(Color.secondary, lineWidth: 3)
-                }
-                
-                ZStack{
-                    ForEach(0..<points.count, id: \.self) { i in
-                        
-                        DrawImage(points: points[i], scaleX: scaleX, scaleY: scaleY, centerY: centerY, color: colors[i] )
-                        
-                        Spacer()
-                        
+                VStack{
+                    Text("Título do gráfico")
+                        .font(.title).bold()
+                    ZStack(alignment: .leading){
+                        Text("Eixo Y")
+                            .position(x: 50+30, y: centerY-max-20)
+                            .font(.subheadline)
+                        Text("Eixo X")
+                            .position(x: width-20, y: centerY-20)
+                            .font(.subheadline)
+                        Path { path in
+                            path.move(to: CGPoint(x: 50, y: centerY-max-20))
+                            
+                            path.addLine(to: CGPoint(x: 50, y: centerY))
+                            
+                            path.addLine(to: CGPoint(x: width, y: centerY))
+                        }.stroke(Color.secondary, lineWidth: 3)
+                        ZStack{
+                            ForEach(0..<points.count, id: \.self) { i in
+                                
+                                DrawImage(points: points[i], scaleX: scaleX, scaleY: scaleY, centerY: centerY, color: colors[i],minx: minValueX, miny: minValueY)
+                                
+                                Spacer()
+                                
+                            }
+                            ///print dos eixos y e eixo x
+                            ForEach (0..<5, id: \.self) { i in
+                                let auxX = CGFloat(i)*CGFloat((width-(max/2))/4)+CGFloat(50)
+                                let value = Float(minValueX)+(Float(maxValueX-minValueX)/4)*Float(i)
+                                Text(String(format:"%.0f",value))
+                                    .position(x: CGFloat(auxX), y: centerY + CGFloat(15))
+                                    .font(.subheadline)
+                            }
+                            ForEach (0..<5, id: \.self) { i in
+                                let auxY = centerY-CGFloat(i)*CGFloat((max+50)/5)
+                                let value = Float(minValueY)+(Float(maxValueY-minValueY)/4)*Float(i)
+                                Text(String(format:"%.0f",value))
+                                    .position(x:50-20, y:CGFloat(auxY))
+                                    .font(.subheadline)
+                            }
+                        }
                     }
-                }
+                }.padding()
             }
         }
     }
 
 struct DispersionGraph_Previews: PreviewProvider {
     static var previews: some View {
-        let points: [[CGPoint]] = [[CGPoint(x: 2, y: 3),
-                                         CGPoint(x: 4, y: 3),
-                                         CGPoint(x: 4, y: 8),
-                                         CGPoint(x: 8, y: 7)],
-                                  [CGPoint(x: 5, y: 2),
-                                        CGPoint(x: 6, y: 4),
-                                        CGPoint(x: 1, y: 8),
-                                        CGPoint(x: 3, y: 5)]]
+        let points: [[CGPoint]] = [[CGPoint(x: -200, y: 300),
+                                         CGPoint(x: 400, y: -300),
+                                         CGPoint(x: 400, y: 800),
+                                         CGPoint(x: 800, y: 700)],
+                                  [CGPoint(x: 500, y: 200),
+                                        CGPoint(x: 600, y: 400),
+                                        CGPoint(x: 100, y: 800),
+                                        CGPoint(x: 300, y: 500)]]
         
        DispersionGraph(points)
-        
     }
 }
