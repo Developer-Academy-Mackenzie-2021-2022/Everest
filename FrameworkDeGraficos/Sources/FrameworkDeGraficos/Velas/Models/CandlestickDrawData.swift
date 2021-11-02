@@ -14,8 +14,8 @@ internal struct CandleStickDrawData {
     let lowBody: CGFloat
     let color: Color
     
-    var bodyOriginY: CGFloat { highStroke - highBody }
-    var bodyHeight: CGFloat { highBody - lowBody }
+    var bodyOriginY: CGFloat { highBody - highStroke }
+    var bodyHeight: CGFloat { lowBody - highBody }
     
     internal init(data: CandleStickData) {
         highStroke = data.highestTradedPrice
@@ -30,5 +30,13 @@ internal struct CandleStickDrawData {
             lowBody = data.openTradedPrice
             color = .green
         }
+    }
+    
+    internal init(highStroke: CGFloat, lowStroke: CGFloat, highBody: CGFloat, lowBody: CGFloat, color: Color) {
+        self.highStroke = highStroke
+        self.lowStroke = lowStroke
+        self.highBody = highBody
+        self.lowBody = lowBody
+        self.color = color
     }
 }
