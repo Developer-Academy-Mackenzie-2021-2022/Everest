@@ -6,11 +6,15 @@ struct RadarGridView: View {
     var size: Double
     
     var body: some View {
-        ZStack{
-            ForEach((1...gridSize), id: \.self){
-                RegularPolygon(sides: sides, size: size*Double($0)/Double(gridSize))
-                    .stroke()
-                    .rotationEffect(Angle(degrees: -90))
+        ZStack {
+            ForEach((1...gridSize), id: \.self) {
+                if $0 == gridSize {
+                    RegularPolygon(sides: sides, size: size*Double($0)/Double(gridSize))
+                        .stroke()
+                } else {
+                    RegularPolygon(sides: sides, size: size*Double($0)/Double(gridSize))
+                        .stroke(.black.opacity(0.5))
+                }
             }
 //            ForEach((0..<sides), id: \.self){
 //                let center: CGPoint = CGPoint(x: 50, y: 100)
