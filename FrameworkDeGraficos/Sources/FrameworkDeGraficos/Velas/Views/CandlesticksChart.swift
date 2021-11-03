@@ -26,7 +26,7 @@ public struct CandleSticksChart: View {
     }
     
     public var body: some View {
-        CandleStickAxis(yLabels: yAxisLabels) {
+        CandleStickAxis(xLabels: ["jan", "fev", "mar"], yLabels: yAxisLabels) {
             Candlesticks(data: data)
         }
     }

@@ -32,7 +32,7 @@ struct Candlesticks: View {
 
 struct CandlestickChart_Previews: PreviewProvider {
     static var previews: some View {
-        CandleStickAxis(yLabels: ["5000", "4000", "3000", "2000", "1000"]) {
+        CandleStickAxis(xLabels: ["jan", "fev", "mar"], yLabels: ["5000", "4000", "3000", "2000", "1000"]) {
             Candlesticks(data: [CandleStickData(highestTradedPrice: 200,
                                                    lowestTradedPrice: 100,
                                                    openTradedPrice: 170,
