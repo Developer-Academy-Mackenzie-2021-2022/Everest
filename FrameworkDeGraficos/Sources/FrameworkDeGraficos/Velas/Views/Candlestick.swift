@@ -18,7 +18,7 @@ struct Candlestick: View {
         self.data = data
     }
     
-    public var body: some View {
+    var body: some View {
         GeometryReader { proxy in
             ZStack {
                 Path { path in

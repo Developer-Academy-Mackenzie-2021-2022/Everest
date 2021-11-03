@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct CandleStickAxis<Child: View>: View {
-    var xTitle: String
-    var yTitle: String
-//    var xLabels: [String]
     var yLabels: [String]
     
     @ViewBuilder var child: () -> Child
@@ -52,7 +49,6 @@ struct CandleStickAxis<Child: View>: View {
                 
                 //MARK: Gráfico
                 VStack(alignment: .leading) {
-    //                Text("\(yTitle)")
                     GeometryReader { proxy in
                         ZStack {
                             // Eixos Y
@@ -77,8 +73,8 @@ struct CandleStickAxis<Child: View>: View {
 
 struct ContentView_Previews2: PreviewProvider {
     static var previews: some View {
-        CandleStickAxis(xTitle: "EixoX", yTitle: "EixoY", yLabels: ["6000", "5000", "4000", "3000", "2000", "1000"]) {
-            CandlestickChart().padding()
+        CandleStickAxis(yLabels: ["6000", "5000", "4000", "3000", "2000", "1000"]) {
+            Candlesticks(data: []).padding()
         }
         .previewLayout(.fixed(width: 400, height: 400))
     }
