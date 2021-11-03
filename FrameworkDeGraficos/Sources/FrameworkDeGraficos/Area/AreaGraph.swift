@@ -48,7 +48,6 @@ public struct AreaGraph: View {
                     .font(.headline)
                     .multilineTextAlignment(.center)
                     .position(x: centerX, y: baseGrafico-1.35*self.alturaGrafico)
-                    .padding()
                 
                 
                 // Loop para cada array de dados
