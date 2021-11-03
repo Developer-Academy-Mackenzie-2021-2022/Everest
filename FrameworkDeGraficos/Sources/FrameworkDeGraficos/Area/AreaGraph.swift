@@ -12,7 +12,7 @@ public struct AreaGraph: View {
     public var alturaGrafico: CGFloat
     let quantidadeY : Int
     
-    public init(datas: [[CGFloat]] = [[100, 60.0, 117, 54, 56 ,13, 216, 543]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2"], colors: [Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255), Color(red: 239 / 255, green: 114 / 255, blue: 65 / 255), Color(red: 247 / 255, green: 197 / 255, blue: 99 / 255), Color(red: 77 / 255, green: 168 / 255, blue: 141 / 255)], marginDireita: CGFloat = 25, marginEsquerda: CGFloat = 50, alturaGrafico: CGFloat = 200, quantidadeY: Int = 5) {
+    public init(datas: [[CGFloat]] = [[100, 60.0, 117, 54, 56 ,13, 215, 100]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2", "3", "4", "5", "6", "7"], colors: [Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255), Color(red: 239 / 255, green: 114 / 255, blue: 65 / 255), Color(red: 247 / 255, green: 197 / 255, blue: 99 / 255), Color(red: 77 / 255, green: 168 / 255, blue: 141 / 255)], marginDireita: CGFloat = 25, marginEsquerda: CGFloat = 50, alturaGrafico: CGFloat = 200, quantidadeY: Int = 5) {
         self.datas = datas
         self.titulo = titulo
         self.legendas = legendas
@@ -156,8 +156,8 @@ struct AreaGraph_Previews: PreviewProvider {
         
         ScrollView {
             VStack{
-                AreaGraph(datas: [[540,225,434, 432, 123, 543], [654, 132, 344, 500, 123, 250]], nomeseixoX: ["Agua e sal", "Lasanha", "Macarrao", "Doce", "Espaguete", "Pizza"])
-                //AreaGraph()
+                //AreaGraph(datas: [[540,225,434, 432, 123, 543], [654, 132, 344, 500, 123, 250]], nomeseixoX: ["Agua e sal", "Lasanha", "Macarrao", "Doce", "Espaguete", "Pizza"])
+                AreaGraph()
                 AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, -100, 23, 54], [70.0, 54.0, 30.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 20.0, 43, -512, 30, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], alturaGrafico: 150)
             }
         }
