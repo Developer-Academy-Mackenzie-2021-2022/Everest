@@ -47,7 +47,8 @@ public struct AreaGraph: View {
                 Text(titulo)
                     .font(.headline)
                     .multilineTextAlignment(.center)
-                    .position(x: centerX, y: baseGrafico-1.25*self.alturaGrafico)
+                    .position(x: centerX, y: baseGrafico-1.35*self.alturaGrafico)
+                    .padding()
                 
                 
                 // Loop para cada array de dados
@@ -156,9 +157,9 @@ struct AreaGraph_Previews: PreviewProvider {
         
         ScrollView {
             VStack{
-                //AreaGraph(datas: [[540,225,434, 432, 123, 543], [654, 132, 344, 500, 123, 250]], nomeseixoX: ["Agua e sal", "Lasanha", "Macarrao", "Doce", "Espaguete", "Pizza"])
+                AreaGraph(datas: [[540,225,434, 432, 123, 543], [654, 132, 344, 500, 123, 250]], nomeseixoX: ["Agua e sal", "Lasanha", "Macarrao", "Doce", "Espaguete", "Pizza"], alturaGrafico: 100)
                 AreaGraph()
-                AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, -100, 23, 54], [70.0, 54.0, 30.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,87,13,42, 54.0, 20.0, 43, -512, 30, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo legal oba bacana", legendas: ["Queimada", "Árvores", "Agua"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], alturaGrafico: 150)
+                AreaGraph(datas: [[10.0, 60.0, 1, 12, 43, 65, 12, 87, 93, -100, 23, 54], [70.0, 54.0, 30.0, 43, 54, 100, 87, 69, 32, 65, 45, 67], [23,65,-87,13,42, 54.0, 20.0, 43, -300, 30, 65, 23]], titulo: "Monitoramento dos Focos Ativos em São Paulo", legendas: ["Queimada", "Árvores", "Água"], nomeseixoX: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], alturaGrafico: 150)
             }
         }
     }
