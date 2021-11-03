@@ -36,7 +36,7 @@ struct HeatmapGraph: View {
                 }
             }
             Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.347, opacity: 1),.init(hue: 0.06944444444, saturation: 0.935, lightness: 0.939, opacity: 1)]), startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.3, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.7, opacity: 1)]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 50, height: 320)
         }
     }
