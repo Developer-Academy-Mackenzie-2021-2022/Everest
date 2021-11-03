@@ -23,10 +23,9 @@ struct RegularPolygon: Shape {
     }
 }
 
-struct Polygon_Previews: PreviewProvider {
+struct RegularPolygon_Previews: PreviewProvider {
     static var previews: some View {
         RegularPolygon(sides: 6, size: 100)
             .stroke(Color(.red))
-            .rotationEffect(Angle(degrees: 90))
     }
 }
