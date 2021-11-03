@@ -10,6 +10,7 @@ import SwiftUI
 struct CashFlowView: View {
     
     let data = [25.3, 30, 6, 7.4, 12.34]
+    let years = [2017, 2018, 2019, 2020, 2021]
     var body: some View {
         
         GeometryReader { bounds in
@@ -19,8 +20,17 @@ struct CashFlowView: View {
                     .opacity(0.6)
                     .edgesIgnoringSafeArea(.top)
                     .edgesIgnoringSafeArea(.bottom)
-                
-                VStack{
+                Text(String(data[1]))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+//                    .position(x: 0, y: data[1])
+//                Text(String(data[0]))
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text(String(data[4]))
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text(String(data[3]))
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text(String(data[2]))
+//                    .frame(maxWidth: .infinity, alignment: .leading)
                     VStack{
                         HStack(alignment: .bottom){
                             ForEach(0..<data.count) { index in
@@ -28,12 +38,21 @@ struct CashFlowView: View {
                                 VStack {
                                     Text(String(format: "%.2f", data[index]))
                                         .font(.caption)
+                                        
                                     LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
                                         .frame(height: CGFloat(data[index])*20)
-                                        .clipShape(Capsule())
-                                        .padding(.horizontal, 5)
+                                        .clipShape(Rectangle())
+//                                        .background(
+//                                            Color.red
+//                                        )
+                                   .padding(.horizontal, 5)
+                                    HStack{
+                                        Text(String(years[index]))
+//                                            .font(.caption)
+                                    }
                                 }
                             }
+                            
                         }
                         .padding()
                     }
@@ -49,8 +68,6 @@ struct CashFlowView: View {
             }
         }
     }
-}
-
 struct CashFlowChartView_Previews: PreviewProvider {
     static var previews: some View {
         CashFlowView()
