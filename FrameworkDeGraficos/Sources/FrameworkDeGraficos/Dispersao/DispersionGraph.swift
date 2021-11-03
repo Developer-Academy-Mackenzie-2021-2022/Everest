@@ -1,60 +1,43 @@
 import SwiftUI
 
-public struct DrawImage: View {
-    private var points: [CGPoint]
-    private var scaleX: CGFloat
-    private var scaleY: CGFloat
-    private var centerY: CGFloat
-    private var minx: CGFloat
-    private var miny: CGFloat
-    public var color: Color
-    
-    
-    public init (points: [CGPoint], scaleX: CGFloat, scaleY: CGFloat, centerY: CGFloat, color: Color, minx: CGFloat, miny: CGFloat) {
-        self.points = points
-        self.scaleX = scaleX
-        self.scaleY = scaleY
-        self.centerY = centerY
-        self.color = color
-        
-        self.minx = minx
-        self.miny = miny
-        
-        
-    }
-    
-    public var body: some View {
-        ZStack {
-            ForEach (0..<points.count, id: \.self) { i in
-                VStack {
-                    Circle()
-                        .fill(color)
-                        .frame(width: 10, height: 10, alignment: .center)
-                        .position(x: CGFloat((points[i].x - minx)*scaleX+50), y: centerY-CGFloat(points[i].y-miny)*scaleY)
-                }
-            }
-        }
-    }
-}
-
 struct DispersionGraph: View {
 
     public var points: [[CGPoint]]
-    public var maxValueX: CGFloat = 0
-    public var minValueX: CGFloat = 0
+    private var maxValueX: CGFloat = 0
+    private var minValueX: CGFloat = 0
 
-    public var maxValueY: CGFloat = 0
-    public var minValueY: CGFloat = 0
-    
-    public var title: String = "Título do gráfico"
-
-    public let colors: [Color] = [Color.green, Color.blue, Color.red]
+    private var maxValueY: CGFloat = 0
+    private var minValueY: CGFloat = 0
     
     let max: CGFloat = 200
     let min: CGFloat = 0
     
     
-    public mutating func setScale(data: [[CGPoint]]){
+    ///as variavies a seguir sao opcionais para o usuario construir o gráfico
+    public var title: String
+    public var eixoX: String
+    public var eixoY: String
+    
+    ///vetor de cores deve ser correspondente à quantidade de variaveis de entrada
+    public var colors: [Color]
+    public var subtitle: [String]
+
+    
+    /// Construtor padrão
+    public init(_ data: [[CGPoint]],title:String = "Gráfico de Dispersão",eixoX:String = "Eixo X", eixoY: String = "Eixo Y",colors: [Color] = colorsDefault,subtitle: [String] = labelsDefault){
+        self.points = data
+        self.title = title
+        self.eixoX = eixoX
+        self.eixoY = eixoY
+        self.colors = colors
+        self.subtitle = subtitle
+        //setar a escala correta nos pontos
+        setScale(data: points)
+        
+        
+    }
+    ///funcao auxiliar para normalizacao
+    private mutating func setScale(data: [[CGPoint]]){
         self.maxValueX = data[0].map({$0.x}).max() ?? CGFloat(0)
         self.maxValueY = data[0].map({$0.y}).max() ?? CGFloat(0)
         
@@ -84,17 +67,14 @@ struct DispersionGraph: View {
         
     }
     
-    ///funcao para mudar o titulo da funcao
-    
-    /// Construtor padrão
-    public init(_ data: [[CGPoint]]){
-        self.points = data
-        //setar a escala correta nos pontos
-        setScale(data: points)
-        
+    ///funcao para mudar as cores do grafico
+    private mutating func setColors(newColors: [Color]) -> [Color]{
+        self.colors = newColors
+        return self.colors
     }
-        var body: some View {
-            
+    
+    
+    var body: some View {
             GeometryReader { geometry in
                 let height = geometry.size.height
                 let width = geometry.size.width-40
@@ -105,13 +85,15 @@ struct DispersionGraph: View {
                 let scaleX = (width-(max/2))/(maxValueX-minValueX)
                 
                 VStack{
-                    Text("Título do gráfico")
+                    Text(title)
                         .font(.title).bold()
+                    
+                    ///linhas dos eixos
                     ZStack(alignment: .leading){
-                        Text("Eixo Y")
+                        Text(eixoY)
                             .position(x: 50+30, y: centerY-max-20)
                             .font(.subheadline)
-                        Text("Eixo X")
+                        Text(eixoX)
                             .position(x: width-20, y: centerY-20)
                             .font(.subheadline)
                         Path { path in
@@ -121,13 +103,11 @@ struct DispersionGraph: View {
                             
                             path.addLine(to: CGPoint(x: width, y: centerY))
                         }.stroke(Color.secondary, lineWidth: 3)
+                        ///grafico plotado com pontos
                         ZStack{
                             ForEach(0..<points.count, id: \.self) { i in
                                 
                                 DrawImage(points: points[i], scaleX: scaleX, scaleY: scaleY, centerY: centerY, color: colors[i],minx: minValueX, miny: minValueY)
-                                
-                                Spacer()
-                                
                             }
                             ///print dos eixos y e eixo x
                             ForEach (0..<5, id: \.self) { i in
@@ -145,7 +125,22 @@ struct DispersionGraph: View {
                                     .font(.subheadline)
                             }
                         }
+                       
                     }
+                    Spacer()
+                    VStack{
+                        ///legenda
+                        ForEach(0..<points.count, id: \.self) { i in
+                            HStack{
+                                Rectangle()
+                                    .fill(colors[i])
+                                    .frame(width: 10, height: 10, alignment: .center)
+                                Text(subtitle[i])
+                                    .font(.subheadline)
+                            }
+                           
+                        }
+                    }.padding()
                 }.padding()
             }
         }
@@ -153,7 +148,8 @@ struct DispersionGraph: View {
 
 struct DispersionGraph_Previews: PreviewProvider {
     static var previews: some View {
-        let points: [[CGPoint]] = [[CGPoint(x: -200, y: 300),
+        let colors: [Color] = [Color.blue, Color.pink, Color.green]
+        let points: [[CGPoint]] = [[CGPoint(x: 200, y: 300),
                                          CGPoint(x: 400, y: -300),
                                          CGPoint(x: 400, y: 800),
                                          CGPoint(x: 800, y: 700)],
@@ -162,6 +158,6 @@ struct DispersionGraph_Previews: PreviewProvider {
                                         CGPoint(x: 100, y: 800),
                                         CGPoint(x: 300, y: 500)]]
         
-       DispersionGraph(points)
+        DispersionGraph(points,colors: colors)
     }
 }
