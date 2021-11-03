@@ -6,17 +6,19 @@ struct RadarLabelsView: View {
     var size: Double
     
     var body: some View {
-        ZStack {
-            ForEach((0..<labels.count), id: \.self) {
-                let pos = getLabelPosition(side: $0)
-                Text(labels[$0])
-                    .position(x: pos.x, y: pos.y)
+        GeometryReader { geometry in
+            ZStack {
+                ForEach((0..<labels.count), id: \.self) {
+                    let pos = getLabelPosition(side: $0, center: CGPoint(x: geometry.size.width/2, y: geometry.size.height/2))
+                    Text(labels[$0])
+                        .position(x: pos.x, y: pos.y)
+                }
             }
         }
+        .frame(width: size, height: size, alignment: .center)
     }
     
-    private func getLabelPosition(side: Int) -> CGPoint {
-        let center: CGPoint = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+    private func getLabelPosition(side: Int, center: CGPoint) -> CGPoint {
         let angle: Double = 2.0 * Double.pi / Double(labels.count)
         let x: Double = cos(Double(side) * angle) * (size * 1.5)
         let y: Double = sin(Double(side) * angle) * (size * 1.5)
@@ -34,6 +36,5 @@ struct RadarLabelsView_Previews: PreviewProvider {
             "Coisinha"
         ]
         RadarLabelsView(labels: labels, size: 100)
-            .rotationEffect(Angle(degrees: -90))
     }
 }
