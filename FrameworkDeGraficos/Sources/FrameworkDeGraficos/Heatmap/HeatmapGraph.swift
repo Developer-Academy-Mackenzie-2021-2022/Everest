@@ -14,25 +14,27 @@ struct HeatmapGraph: View {
     
     var body: some View {
         let escala = maiorNumeroDaMatriz(matriz: matriz)
+        
         HStack{
             ForEach((0 ..<  matriz.count), id:\.self){ i in
                 
                 VStack{
-                    ForEach(matriz[i], id:\.self){
-                        matriz in
+                    let screenWidth = UIScreen.main.bounds.size.width * 0.7
+                    
+                        ForEach(matriz[i], id:\.self){
+                            elemento in
+                            GeometryReader { geometry in
+                          SquareView(
+                            quadrado: ModelSquare(valor: elemento, cor: Color.red, largura: screenWidth/Double(matriz.count), altura: screenWidth/Double(matriz.count)),
+                                showNumero: showNumero, escala: escala)
 
-                      SquareView(
-                            quadrado: ModelSquare(valor: matriz, cor: Color.red, largura: 100.0, altura: 100.0),
-                            showNumero: showNumero, escala: escala)
-
-//                        Text(String(format: "%.2f", matriz))
-
+                            }.frame(width: screenWidth/Double(matriz.count), height: screenWidth/Double(matriz.count))
                     }
                 }
             }
         }
     }
-    
+
     func maiorNumeroDaMatriz(matriz: [[Double]]) -> Double {
         var maiorNumero = Double.leastNormalMagnitude
         for i in matriz{
@@ -44,9 +46,8 @@ struct HeatmapGraph: View {
     }
 }
 
-
 struct HeatmapGraph_Previews: PreviewProvider {
     static var previews: some View {
-        HeatmapGraph(matriz: [[156,2,3], [5,600,7], [990,10,13]], showNumero: true)
+        HeatmapGraph(matriz: [[156,270,398], [502,600,788.9], [990,104,1367]], showNumero: true)
     }
 }

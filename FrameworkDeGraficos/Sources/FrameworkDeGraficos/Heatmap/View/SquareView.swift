@@ -10,8 +10,8 @@ import SwiftUI
 struct SquareView: View {
     var quadrado: ModelSquare
     var showNumero: Bool
-    
     var escala: Double
+
     
     var body: some View {
         VStack{
