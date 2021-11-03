@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-struct CandleSticksChart: View {
+public struct CandleSticksChart: View {
     let data: [CandleStickData]
     let numberOfYLines: Int = 5
+    
+    public init(data: [CandleStickData]) {
+        self.data = data
+    }
     
     private var yAxisLabels: [String] {
         let highest = data
@@ -21,7 +25,7 @@ struct CandleSticksChart: View {
         return Array(1...numberOfYLines).map { "\($0 * Int(factor))" }.reversed()
     }
     
-    var body: some View {
+    public var body: some View {
         CandleStickAxis(yLabels: yAxisLabels) {
             Candlesticks(data: data)
         }
