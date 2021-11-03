@@ -10,9 +10,11 @@ import SwiftUI
 public struct CandleSticksChart: View {
     let data: [CandleStickData]
     let numberOfYLines: Int = 5
+    let xLabels: [String]
     
-    public init(data: [CandleStickData]) {
+    public init(data: [CandleStickData], xLabels: [String]) {
         self.data = data
+        self.xLabels = xLabels
     }
     
     private var yAxisLabels: [String] {
@@ -24,9 +26,10 @@ public struct CandleSticksChart: View {
         
         return Array(1...numberOfYLines).map { "\($0 * Int(factor))" }.reversed()
     }
+
     
     public var body: some View {
-        CandleStickAxis(xLabels: ["jan", "fev", "mar"], yLabels: yAxisLabels) {
+        CandleStickAxis(xLabels: xLabels, yLabels: yAxisLabels) {
             Candlesticks(data: data)
         }
     }
@@ -105,7 +108,7 @@ struct SwiftUIView_Previews: PreviewProvider {
                                     CandleStickData(highestTradedPrice: 150,
                                                     lowestTradedPrice: 70,
                                                     openTradedPrice: 90,
-                                                    closeTradedPrice: 150)])
+                                                    closeTradedPrice: 150)], xLabels: ["jan", "fev", "mar"])
             .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/))
     }
 }
