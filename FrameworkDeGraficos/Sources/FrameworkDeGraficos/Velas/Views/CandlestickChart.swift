@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CandlestickChart: View {
-    let data: [CandleStickData] = [CandleStickData(highestTradedPrice: 500,
+    let data: [CandleStickData] = [CandleStickData(highestTradedPrice: 200,
                                                    lowestTradedPrice: 100,
                                                    openTradedPrice: 170,
                                                    closeTradedPrice: 150),
@@ -103,9 +103,9 @@ struct CandlestickChart: View {
 
 struct CandlestickChart_Previews: PreviewProvider {
     static var previews: some View {
-        CandlestickChart()
-            .previewLayout(.fixed(width: 500, height: 500))
+        CandleStickAxis(xTitle: "EixoX", yTitle: "EixoY", yLabels: ["5000", "4000", "3000", "2000", "1000"]) {
+            CandlestickChart().padding()
             
-        
+        }.previewLayout(.fixed(width: 500, height: 500))
     }
 }
