@@ -86,8 +86,10 @@ public struct DispersionGraph: View {
                 
                 VStack{
                     Text(title)
+                        //.font(.title).multilineTextAlignment(.leading).bold()
                         .font(.title).bold()
-                    
+                        .padding(.leading, -50)
+                    Spacer()
                     ///linhas dos eixos
                     ZStack(alignment: .leading){
                         Text(eixoY)
