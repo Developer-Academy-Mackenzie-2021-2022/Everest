@@ -36,7 +36,7 @@ struct HeatmapGraph: View {
                 }
             }
             Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.3, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.7, opacity: 1)]), startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.3, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.5, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.7, opacity: 1)]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 50, height: 320)
         }
     }
@@ -51,27 +51,7 @@ struct HeatmapGraph: View {
         return maiorNumero
     }
 }
-extension Color {
-    init(hue: Double, saturation: Double, lightness: Double, opacity: Double) {
-        precondition(0...1 ~= hue &&
-                     0...1 ~= saturation &&
-                     0...1 ~= lightness &&
-                     0...1 ~= opacity, "input range is out of range 0...1")
-        
-        //From HSL TO HSB ---------
-        var newSaturation: Double = 0.0
-        
-        let brightness = lightness + saturation * min(lightness, 1-lightness)
-        
-        if brightness == 0 { newSaturation = 0.0 }
-        else {
-            newSaturation = 2 * (1 - lightness / brightness)
-        }
-        //---------
-        
-        self.init(hue: hue, saturation: newSaturation, brightness: brightness, opacity: opacity)
-    }
-}
+
 
 struct HeatmapGraph_Previews: PreviewProvider {
     static var previews: some View {
