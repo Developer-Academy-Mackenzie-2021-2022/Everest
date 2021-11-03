@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DispersionGraph: View {
+public struct DispersionGraph: View {
 
     public var points: [[CGPoint]]
     private var maxValueX: CGFloat = 0
@@ -74,7 +74,7 @@ struct DispersionGraph: View {
     }
     
     
-    var body: some View {
+    public var body: some View {
             GeometryReader { geometry in
                 let height = geometry.size.height
                 let width = geometry.size.width-40
