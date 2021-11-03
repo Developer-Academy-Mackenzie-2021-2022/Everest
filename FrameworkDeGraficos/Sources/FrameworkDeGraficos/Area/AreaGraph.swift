@@ -12,7 +12,7 @@ public struct AreaGraph: View {
     public var alturaGrafico: CGFloat
     let quantidadeY : Int
     
-    public init(datas: [[CGFloat]] = [[100, 60.0, 117, 54, 56 ,13, 215, 100]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2", "3", "4", "5", "6", "7"], colors: [Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255), Color(red: 239 / 255, green: 114 / 255, blue: 65 / 255), Color(red: 247 / 255, green: 197 / 255, blue: 99 / 255), Color(red: 77 / 255, green: 168 / 255, blue: 141 / 255)], marginDireita: CGFloat = 25, marginEsquerda: CGFloat = 50, alturaGrafico: CGFloat = 200, quantidadeY: Int = 5) {
+    public init(datas: [[CGFloat]] = [[100, 60.0, 117, 54, 56 ,13, 215, 100]], titulo: String = "Title", legendas: [String] = ["legenda"], nomeseixoX: [String] = ["0", "1", "2", "3", "4", "5", "6", "7"], colors: [Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255), Color(red: 239 / 255, green: 114 / 255, blue: 65 / 255), Color(red: 247 / 255, green: 197 / 255, blue: 99 / 255), Color(red: 77 / 255, green: 168 / 255, blue: 141 / 255)], marginDireita: CGFloat = 25, marginEsquerda: CGFloat = 50, alturaGrafico: CGFloat = 200, quantidadeY: Int = 5) {
         self.datas = datas
         self.titulo = titulo
         self.legendas = legendas
