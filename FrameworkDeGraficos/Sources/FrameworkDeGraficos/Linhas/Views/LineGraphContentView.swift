@@ -37,7 +37,7 @@ struct LineGraphContentView: View {
                         
                         
                     }
-                    .stroke(Color.red, lineWidth: 3)
+                    .stroke(line.color, lineWidth: 3)
                     
                 }
                 
