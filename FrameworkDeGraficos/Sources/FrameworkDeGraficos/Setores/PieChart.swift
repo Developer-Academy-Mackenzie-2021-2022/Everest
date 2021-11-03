@@ -1,6 +1,5 @@
 import SwiftUI
 
-////ViewModels
 final class PieChartViewModel: ObservableObject {
 
     init(data: [Double], label:[String], cor:[Color]){
@@ -11,24 +10,6 @@ final class PieChartViewModel: ObservableObject {
     var data: [Double] = []
     var label: [String] = []
     var cor: [Color] = []
-    
-}
-
-// Views
-struct PieceOfPie: Shape {
-    let startDegree: Double
-    let endDegree: Double
-    
-    func path(in rect: CGRect) -> Path {
-        Path { p in
-            let center = CGPoint(x: rect.midX, y: rect.midY)
-            p.move(to: center)
-            p.addArc(center: center, radius: rect.width / 2, startAngle: Angle(degrees: startDegree), endAngle: Angle(degrees: endDegree), clockwise: false)
-            p.closeSubpath()
-            
-        }
-    }
-    
     
 }
 
@@ -58,8 +39,6 @@ struct PieChart: View {
                             .position(getLabelCoordinate(in: geometry.size, for: lastDegree + (currentEndDegree / 2)))
                         
                     }
-                
-                    
                     
                 }
                 
@@ -84,34 +63,18 @@ struct PieChart: View {
 
 struct ContentView: View {
     var body: some View {
-//        NavigationView{
-//            ScrollView
-//        }
-        VStack(alignment: .leading) {
-            Text("Gráfico de Setores").font(.largeTitle)
-                .padding()
-            Text("Subtitulo").font(.title)
-            // é title1 mas não tem no .font
-          
             
             PieChart()
                 
             
     }
-//        .navigationTitle("Gráfico de Setores")
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+       
         ContentView()
-//
         
     }
 }
-/*public struct SectorGraph {
-    public private(set) var text = "Hello, World!"
 
-    public init() {
-    }
-}*/
-}
