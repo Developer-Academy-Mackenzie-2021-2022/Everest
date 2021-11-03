@@ -9,10 +9,9 @@ import SwiftUI
 
 struct LineGraphContentView: View {
     
-    let lines: [Line]
+    var lines: [Line]
     
-    @StateObject
-    var lineGraphModel = LineGraphModel()
+    var dataNormalizer = DataNormalizer()
     
     internal init(lines: [Line]) {
         self.lines = lines
@@ -22,19 +21,38 @@ struct LineGraphContentView: View {
         
         GeometryReader { proxy in
             ZStack {
-                Text("oi :)")
                 
-                //as coisa que a gente desenha
-            }.onAppear {
-                lineGraphModel.updateSpace(lines: lines, viewSize: proxy.size)
+                ForEach(lines, id: \.self) { line in
+                     
+                    let normalizedLine = dataNormalizer.normalizePoints(line.points, viewSize: proxy.size)
+                    Path { path in
+                        guard let firstPoint = normalizedLine.first else {
+                            return
+                        }
+                        
+                        path.move(to: firstPoint)
+                        
+                        
+                        for point in normalizedLine {
+                            path.addLine(to: point)
+                        }
+                        
+                        
+                    }
+                    .stroke(Color.red, lineWidth: 3)
+                    
+                }
+                
             }
         }
     }
 }
 
 struct SwiftUIView_Previews1: PreviewProvider {
+
     static var previews: some View {
-        LineGraphContentView(lines: [Line(points: [CGPoint(x: 10, y: 10)])])
+  
+        LineGraphContentView(lines: [Line(points: [CGPoint(x: 0, y: 0), CGPoint(x: 5, y: 9), CGPoint(x: 10, y: 10)], lineTitle: "linha", color: Color.blue, lineWidth: 3), Line(points: [CGPoint(x: 0, y: 0), CGPoint(x: 20, y: 20)], lineTitle: "linha", color: Color.red, lineWidth: 1)])
             .previewLayout(.fixed(width: 200.0, height: 200.0))
     }
 }
