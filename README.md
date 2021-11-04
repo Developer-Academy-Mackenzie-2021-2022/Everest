@@ -17,7 +17,7 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
-    ![Gráfico de disperção](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png)
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png" height="400" />
     
 - Fluxo de Caixa
 - HeatMap
