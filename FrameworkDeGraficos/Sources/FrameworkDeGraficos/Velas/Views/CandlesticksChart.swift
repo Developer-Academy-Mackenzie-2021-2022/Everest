@@ -11,6 +11,10 @@ public struct CandleSticksChart: View {
     let data: [CandleStickData]
     let numberOfYLines: Int = 5
     let xLabels: [String]
+    var barColor: Color = .primary
+    var labelColor: Color = .primary
+    var increaseCandleColor: Color = .green
+    var decreaseCandleColor: Color = .red
     
     public init(data: [CandleStickData], xLabels: [String]) {
         self.data = data
@@ -29,8 +33,8 @@ public struct CandleSticksChart: View {
 
     
     public var body: some View {
-        CandleStickAxis(xLabels: xLabels, yLabels: yAxisLabels) {
-            Candlesticks(data: data)
+        CandleStickAxis(xLabels: xLabels, yLabels: yAxisLabels, barColor: barColor, labelColor: labelColor) {
+            Candlesticks(data: data, increaseColor: increaseCandleColor, decreaseColor: decreaseCandleColor)
         }
     }
 }
@@ -109,6 +113,9 @@ struct SwiftUIView_Previews: PreviewProvider {
                                                     lowestTradedPrice: 70,
                                                     openTradedPrice: 90,
                                                     closeTradedPrice: 150)], xLabels: ["jan", "fev", "mar"])
+            .preferredColorScheme(.dark)
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
             .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/))
+        
     }
 }

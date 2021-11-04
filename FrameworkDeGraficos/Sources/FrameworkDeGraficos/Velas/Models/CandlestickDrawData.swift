@@ -17,18 +17,18 @@ internal struct CandleStickDrawData {
     var bodyOriginY: CGFloat { highBody - highStroke }
     var bodyHeight: CGFloat { lowBody - highBody }
     
-    internal init(data: CandleStickData) {
+    internal init(data: CandleStickData, increaseColor: Color, decreaseColor: Color) {
         highStroke = data.highestTradedPrice
         lowStroke = data.lowestTradedPrice
         
         if data.openTradedPrice >= data.closeTradedPrice {
             highBody = data.openTradedPrice
             lowBody = data.closeTradedPrice
-            color = .red
+            color = decreaseColor
         } else {
             highBody = data.closeTradedPrice
             lowBody = data.openTradedPrice
-            color = .green
+            color = increaseColor
         }
     }
     

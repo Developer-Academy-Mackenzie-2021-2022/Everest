@@ -12,4 +12,11 @@ public struct CandleStickData: Codable, Hashable {
     let lowestTradedPrice: Double
     let openTradedPrice: Double
     let closeTradedPrice: Double
+    
+    public init(highestTradedPrice: Double, lowestTradedPrice: Double, openTradedPrice: Double, closeTradedPrice: Double) {
+        self.highestTradedPrice = highestTradedPrice
+        self.lowestTradedPrice = lowestTradedPrice
+        self.openTradedPrice = openTradedPrice
+        self.closeTradedPrice = closeTradedPrice
+    }
 }

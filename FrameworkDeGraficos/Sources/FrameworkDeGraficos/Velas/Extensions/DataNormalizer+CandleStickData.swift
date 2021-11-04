@@ -5,12 +5,12 @@
 //  Created by Gabriel Ferreira de Carvalho on 29/10/21.
 //
 
-import CoreGraphics
+import SwiftUI
 
 extension DataNormalizer {
     
-    func normalizeCandlestickData(_ data: [CandleStickData], height: CGFloat) -> [CandleStickDrawData] {
-        let drawData = data.map(CandleStickDrawData.init)
+    func normalizeCandlestickData(_ data: [CandleStickData], height: CGFloat, increaseColor: Color, decreaseColor: Color) -> [CandleStickDrawData] {
+        let drawData = data.map { CandleStickDrawData(data: $0, increaseColor: increaseColor, decreaseColor: decreaseColor) }
         let (min,max) = calculateDataBoundaries(data: drawData)
         let normalizedByMinValue = normalizeCandlestickDataByMinValue(data: drawData, minValue: min)
         let scaleFactor = findScaleFactor(height, max)

@@ -13,18 +13,20 @@ struct CandleStickAxis<Child: View>: View {
     var yLabels: [String]
     @State
     var xAxisHeight: CGFloat = 0
+    var barColor: Color
+    var labelColor: Color
     
     @ViewBuilder var child: () -> Child
     @ViewBuilder func axis(_ size: CGSize) -> some View {
         Path { path in
             path.move(to: CGPoint(x: 0, y: size.height)) // ponto final
             path.addLine(to: CGPoint(x: 0, y: 0)) // ponto inicial
-        }.stroke(Color.black, lineWidth: 2)
+        }.stroke(barColor, lineWidth: 2)
         
         Path { path in
             path.move(to: CGPoint(x: size.width, y: size.height))
             path.addLine(to: CGPoint(x: 0, y: size.height))
-        }.stroke(Color.black, lineWidth: 2)
+        }.stroke(barColor, lineWidth: 2)
     }
     
     var body: some View {
@@ -43,6 +45,7 @@ struct CandleStickAxis<Child: View>: View {
                                 let yPosition = ((proxy.size.height-xAxisHeight)*multiplierY) * CGFloat(i)
                                 Text("\(label)")
                                     .font(.system(size: 12))
+                                    .foregroundColor(labelColor)
                                     .offset(x: 12, y: yPosition)
                                 
                             }
@@ -65,7 +68,7 @@ struct CandleStickAxis<Child: View>: View {
                                     let xPosition = (proxy.size.width*multiplierX) * CGFloat(i)
                                     path.move(to: CGPoint(x: xPosition, y: 0))
                                     path.addLine(to: CGPoint(x:xPosition , y: proxy.size.height))
-                                }.stroke(Color.black.opacity(0.2))
+                                }.stroke(barColor.opacity(0.2))
                             }
                             
                             // Eixos Y
@@ -74,7 +77,7 @@ struct CandleStickAxis<Child: View>: View {
                                     let yPosition = (proxy.size.height*multiplierY) * CGFloat(i)
                                     path.move(to: CGPoint(x: proxy.size.width, y: yPosition))
                                     path.addLine(to: CGPoint(x: 0 , y: yPosition))
-                                }.stroke(Color.black.opacity(0.2))
+                                }.stroke(barColor.opacity(0.2))
                             }
                         }
                     }
@@ -92,6 +95,7 @@ struct CandleStickAxis<Child: View>: View {
                                         xAxisHeight = proxy.size.height * 1.5
                                     })
                                     .font(.system(size: 12))
+                                    .foregroundColor(labelColor)
                                     .position(x: xPosition, y: proxy.size.height)
                             }
                         }
@@ -105,8 +109,8 @@ struct CandleStickAxis<Child: View>: View {
 
 struct ContentView_Previews2: PreviewProvider {
     static var previews: some View {
-        CandleStickAxis(xLabels: ["jan", "fev", "mar"], yLabels: ["6000", "5000", "4000", "3000", "2000", "1000"]) {
-            Candlesticks(data: []).padding() 
+        CandleStickAxis(xLabels: ["jan", "fev", "mar"], yLabels: ["6000", "5000", "4000", "3000", "2000", "1000"], barColor: .primary, labelColor: .primary) {
+            Candlesticks(data: [], increaseColor: .blue, decreaseColor: .yellow).padding() 
         }
         .previewLayout(.fixed(width: 400, height: 400))
     }
