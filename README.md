@@ -10,10 +10,10 @@ O projeto se encontra em desenvolvimento pela turma 2021 da Developer Academy | 
 
 Esse framework foi desenvolvido para facilitar a criação de gráficos utilizando SwiftUI. Com ele se podem criar os seguintes gráficos:
 
-<details> <summary> [Áreas](https://github.com/Developer-Academy-Mackenzie-2021-2022/AreaExample) </summary>
+- [Áreas](https://github.com/Developer-Academy-Mackenzie-2021-2022/AreaExample)
     
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png" height="400" />
-</details>
+    
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
