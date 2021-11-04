@@ -15,7 +15,7 @@ public struct PieChart: View {
     
     public init(data: [Double] = [0.27, 0.15, 0.18, 0.4],
                 cor:[Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255)],
-                legenda:[String] = ["Agricultura", "Transporte", "Indústria", "Energia elétrica"]){
+                legenda:[String] = ["Agro", "Transp.", "Indústria", "Energia"]){
         self.data = data
         self.label = data.map{ value in "\(value*100)%" }
         self.cor = cor
@@ -84,20 +84,10 @@ public struct PieChart: View {
     }
     
     
-    
-    
-    struct ContentView: View {
-        var body: some View {
-            
-            PieChart()
-            
-        }
-    }
-    
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             
-            ContentView()
+            PieChart()
             
         }
     }
