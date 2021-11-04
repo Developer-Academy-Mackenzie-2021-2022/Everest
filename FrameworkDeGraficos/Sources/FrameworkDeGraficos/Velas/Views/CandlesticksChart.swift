@@ -16,7 +16,7 @@ public struct CandleSticksChart: View {
     var increaseCandleColor: Color = .green
     var decreaseCandleColor: Color = .red
     
-    public init(data: [CandleStickData], xLabels: [String], barColor: Color = Color.primary, labelColor: Color = Color.primary, increaseCandleColor: Color = Color.green, decreaseCandleColor: Color = Color.red) {
+    public init(data: [CandleStickData], xLabels: [String], barColor: Color = Color.primary, labelColor: Color = Color.primary, increaseCandleColor: Color = Color(red: 0x4D/255, green: 0xA8/255, blue: 0x8D/255) , decreaseCandleColor: Color = Color(red: 0xF5/255, green: 0x45/255, blue: 0x4F/255)) {
         self.data = data
         self.xLabels = xLabels
         self.barColor = barColor

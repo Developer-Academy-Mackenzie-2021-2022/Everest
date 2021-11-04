@@ -60,7 +60,7 @@ struct CandleStickAxis<Child: View>: View {
                     GeometryReader { proxy in
                         ZStack {
                             axis(proxy.size)
-                            child()
+                            
                             
                             // Eixos X
                             ForEach(1..<(xLabels.count+1)) { i in
@@ -79,6 +79,7 @@ struct CandleStickAxis<Child: View>: View {
                                     path.addLine(to: CGPoint(x: 0 , y: yPosition))
                                 }.stroke(barColor.opacity(0.2))
                             }
+                            child()
                         }
                     }
                     
