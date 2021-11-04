@@ -46,7 +46,7 @@ struct ContentView: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SingleGraphView(colorSingleBar: Color("Variável 2"), colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 0, valueSingleBar: barValuesOne[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+                                SingleGraphView(colorSingleBar: Color.color1, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 0, valueSingleBar: barValuesOne[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
                             }
                         }
                     }
@@ -95,7 +95,7 @@ struct ContentView2: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                StackedGraphView(colorBarOne: Color("Variável 7"), colorBarTwo: Color("Variável 1"), colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 5, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+                                StackedGraphView(colorBarOne: Color.color2, colorBarTwo: Color.color3, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 5, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
                             }
                         }
                     }
@@ -141,7 +141,7 @@ struct ContentView3: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SideGraphView(colorBarOne: Color("Variável 6"), colorBarTwo: Color("Variável 5"), colorLabel: .black, textLabelOne: labelValuesOne[$0], textLabelTwo: labelValuesTwo[$0], cornerRadiusBar: 0, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count))
+                                SideGraphView(colorBarOne: Color.color4, colorBarTwo: Color.color5, colorLabel: .black, textLabelOne: labelValuesOne[$0], textLabelTwo: labelValuesTwo[$0], cornerRadiusBar: 0, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count))
                             }
                         }
                     }
@@ -188,7 +188,7 @@ struct ContentView4: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SingleGraphView(colorSingleBar: Color("Variável 5"), colorLabel: .black, textLabel: "", cornerRadiusBar: 20, valueSingleBar: barValuesOne[$0], widthBar: (width - 120) / CGFloat(barValuesOne.count))
+                                SingleGraphView(colorSingleBar: Color.color6, colorLabel: .black, textLabel: "", cornerRadiusBar: 20, valueSingleBar: barValuesOne[$0], widthBar: (width - 120) / CGFloat(barValuesOne.count))
                             }
                         }
                     }
@@ -235,7 +235,7 @@ struct ContentView5: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SideGraphView3(colorBarOne: Color("Variável 4"), colorBarTwo: Color("Variável 1"), colorBarThree: Color("Variável 3"), colorLabel: .black, textLabelOne: "\(Int(barValuesOne[$0]))", textLabelTwo: "\(Int(barValuesTwo[$0]))", textLabelThree: "\(Int(barValuesThree[$0]))", cornerRadiusBar: 3, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], valueBarThree: barValuesThree[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count + barValuesThree.count ))
+                                SideGraphView3(colorBarOne: Color.color4, colorBarTwo: Color.color1, colorBarThree: Color.color2, colorLabel: .black, textLabelOne: "\(Int(barValuesOne[$0]))", textLabelTwo: "\(Int(barValuesTwo[$0]))", textLabelThree: "\(Int(barValuesThree[$0]))", cornerRadiusBar: 3, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], valueBarThree: barValuesThree[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count + barValuesThree.count ))
                             }
                         }
                     }
