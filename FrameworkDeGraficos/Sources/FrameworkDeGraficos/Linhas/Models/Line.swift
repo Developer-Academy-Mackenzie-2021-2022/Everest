@@ -14,6 +14,13 @@ public struct Line: Hashable {
     public var color: Color
     public var lineWidth: CGFloat
     
+    public init(points: [CGPoint], lineTitle: String, color: Color = Color.red, lineWidth: CGFloat = 3) {
+        self.points = points
+        self.lineTitle = lineTitle
+        self.lineWidth = lineWidth
+        self.color = color
+    }
+    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(lineTitle)
     }

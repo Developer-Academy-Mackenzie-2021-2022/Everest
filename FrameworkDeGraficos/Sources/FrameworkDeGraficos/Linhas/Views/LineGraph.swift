@@ -6,7 +6,11 @@ public struct LineGraph: View {
     let xLabels: [String]
     let yLabels: [String]
 
-    
+    public init(data: [Line], xLabels: [String], yLabels: [String]) {
+        self.data = data
+        self.xLabels = xLabels
+        self.yLabels = yLabels
+    }
     
     public var body: some View {
         AxisView(xLabels: xLabels, yLabels: yLabels.reversed(), child:{
