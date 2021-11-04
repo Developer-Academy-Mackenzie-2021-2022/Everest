@@ -84,11 +84,9 @@ public struct DispersionGraph: View {
                 let scaleY = max/(maxValueY-minValueY)
                 let scaleX = (width-(max/2))/(maxValueX-minValueX)
                 
-                VStack{
+                VStack(alignment: .leading){
                     Text(title)
-                        //.font(.title).multilineTextAlignment(.leading).bold()
                         .font(.title).bold()
-                        .padding(.leading, -50)
                     Spacer()
                     ///linhas dos eixos
                     ZStack(alignment: .leading){
