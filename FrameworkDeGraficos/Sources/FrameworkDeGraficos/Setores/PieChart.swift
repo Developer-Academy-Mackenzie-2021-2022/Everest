@@ -14,16 +14,17 @@ public struct PieChart: View {
     public var cor: [Color] = []
     public var legenda: [String] = []
     
-    public init(data: [Double] = [0.29, 0.15, 0.18, 0.4],
+    public init(data: [Double] = [0.25, 0.25, 0.25, 0.25],
                 cor:[Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255)],
                 legenda:[String] = ["Agro", "Transp.", "Indústria", "Energia"]){
         
         
-//        let maxValue = findMaxValue(data: data)
-//        for i in 0..<data.count{
-//            self.data.append(DataNormalizer.shared.normalizeByScaleFactor(data[i], scaleFactor: maxValue))
-//        }
+        let maxValue = getTotalValue(data: data)
+        for i in 0..<data.count{
+            self.data.append(DataNormalizer.shared.normalizeByScaleFactor(data[i], scaleFactor: 1/maxValue))
+        }
    
+//        self.data = data
         self.label = data.map{ value in "\(value*100)%" }
         self.cor = cor
         self.legenda = legenda
@@ -90,14 +91,12 @@ private func getLabelCoordinate(in geoSize: CGSize, for degree: Double)  -> CGPo
     
 }
 
-private func findMaxValue(data: [Double]) -> Double {
-    var max = data[0]
+private func getTotalValue(data: [Double]) -> Double {
+    var soma: Double = 0
     for d in data {
-        if d > max {
-            max = d
-        }
+        soma += d
     }
-    return max
+    return soma
 }
 
 
