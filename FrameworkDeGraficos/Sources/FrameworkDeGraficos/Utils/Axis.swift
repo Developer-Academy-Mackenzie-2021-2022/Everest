@@ -1,10 +1,3 @@
-//
-//  Axis.swift
-//
-//
-//  Created by Caroline Taus on 03/11/21.
-//
-
 import Foundation
 import SwiftUI
 
@@ -31,8 +24,8 @@ struct AxisView<Child: View>: View {
     var body: some View {
         
         HStack {
-            let multiplierX: CGFloat = (1/CGFloat(xLabels.count))
-            let multiplierY: CGFloat = (1/CGFloat(yLabels.count))
+            let multiplierX: CGFloat = (1/CGFloat(xLabels.count-1))
+            let multiplierY: CGFloat = (1/CGFloat(yLabels.count-1))
             
             //MARK: Labels do eixo Y
             HStack(alignment: .top) {
@@ -60,7 +53,7 @@ struct AxisView<Child: View>: View {
                         child()
                         
                         // Eixos X
-                        ForEach(1..<(xLabels.count+1)) { i in
+                        ForEach(0..<(xLabels.count)) { i in
                             Path { path in
                                 let xPosition = (proxy.size.width*multiplierX) * CGFloat(i)
                                 path.move(to: CGPoint(x: xPosition, y: 0))
@@ -83,9 +76,9 @@ struct AxisView<Child: View>: View {
                 HStack {
                     GeometryReader { proxy in
                         
-                        ForEach(1..<(xLabels.count+1)) { i in
+                        ForEach(0..<(xLabels.count)) { i in
                             
-                            let label: String = xLabels[i-1]
+                            let label: String = xLabels[i]
                             let xPosition = (proxy.size.width*multiplierX) * CGFloat(i)
                             Text("\(label)")
                                 .onAppear(perform: {
