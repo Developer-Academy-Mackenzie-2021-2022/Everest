@@ -113,7 +113,7 @@ struct DataNormalizer {
         return Array(repeating: 0, count: normalizedXAxis.count)
             .indices
             .map { CGPoint(x: normalizedXAxis[$0], y: normalizedYAxis[$0]) }
-        
     }
+
 
 }
