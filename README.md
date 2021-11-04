@@ -12,12 +12,12 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 
 - [Áreas](https://github.com/Developer-Academy-Mackenzie-2021-2022/AreaExample)
     
-    ![simulator_screenshot_0FB42242-1260-4156-9CF1-FBC07DD05ACC.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7db1aa69-c600-44ef-973f-7e61d13f8065/simulator_screenshot_0FB42242-1260-4156-9CF1-FBC07DD05ACC.png)
+    ![Area Chart](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png | width=250)
     
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f97d090-d126-48ee-9d03-7fc0f0ba5392/Untitled.png)
+    ![Gráfico de disperção](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png | width=250)
     
 - Fluxo de Caixa
 - HeatMap
