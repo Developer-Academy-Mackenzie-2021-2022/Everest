@@ -60,7 +60,7 @@ public struct PieChart: View {
                                 .fill(cor[$0])
                                 .frame(width: 10, height: 10)
                            
-                            Text(legenda[$0]).font(.subheadline.)
+                            Text(legenda[$0]).font(.subheadline)
                                
                             
                         }
