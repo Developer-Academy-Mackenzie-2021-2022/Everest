@@ -18,7 +18,7 @@ public struct RadarChart: View {
                                    Color(red: 0xF7 / 255, green: 0xC5 / 255, blue: 0x63 / 255),
                                    Color(red: 0x4D / 255, green: 0xA8 / 255, blue: 0x8D / 255),],
                 gridSize: Int = 4,
-                labels: [String] = [""]) {
+                labels: [String] = []) {
         self.data = data
         self.size = size
         self.colors = colors
@@ -43,8 +43,10 @@ public struct RadarChart: View {
                         .frame(width: size, height: size, alignment: .center)
                 }
                 
-                RadarLabelsView(labels: labels, size: size)
-                    .edgesIgnoringSafeArea(.vertical)
+                if labels.count > 0 {
+                    RadarLabelsView(labels: labels, size: size)
+                        .edgesIgnoringSafeArea(.vertical)
+                }
             }
             
         }
