@@ -24,8 +24,8 @@ public struct Histograma: View {
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
             let centerY = height
-            let maxValue = data.max() ?? 0
-            let minValue = data.min() ?? 0
+//            let maxValue = data.max() ?? 0
+//            let minValue = data.min() ?? 0
             let max: CGFloat = 200.0
             
             ZStack (alignment: .center) {

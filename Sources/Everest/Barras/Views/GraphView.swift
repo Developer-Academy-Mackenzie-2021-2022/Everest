@@ -132,7 +132,7 @@ struct SideGraphView3: View {
             HStack(alignment: .bottom, spacing: 1){
                 VStack{
                     Text(textLabelOne)
-                        .font(.caption2)
+                        .font(.subheadline)
                         .foregroundColor(colorLabel)
                     ZStack(alignment: .bottom){
                         Rectangle()
@@ -144,7 +144,7 @@ struct SideGraphView3: View {
                 
                 VStack {
                     Text(textLabelTwo)
-                        .font(.caption2)
+                        .font(.subheadline)
                         .foregroundColor(colorLabel)
                     ZStack(alignment: .bottom){
                         Rectangle()
@@ -156,7 +156,7 @@ struct SideGraphView3: View {
                 }
                 VStack {
                     Text(textLabelThree)
-                        .font(.caption2)
+                        .font(.subheadline)
                         .foregroundColor(colorLabel)
                     ZStack(alignment: .bottom){
                         Rectangle()
