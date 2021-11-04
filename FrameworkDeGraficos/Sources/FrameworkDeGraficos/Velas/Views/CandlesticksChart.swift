@@ -16,9 +16,13 @@ public struct CandleSticksChart: View {
     var increaseCandleColor: Color = .green
     var decreaseCandleColor: Color = .red
     
-    public init(data: [CandleStickData], xLabels: [String]) {
+    public init(data: [CandleStickData], xLabels: [String], barColor: Color = Color.primary, labelColor: Color = Color.primary, increaseCandleColor: Color = Color.green, decreaseCandleColor: Color = Color.red) {
         self.data = data
         self.xLabels = xLabels
+        self.barColor = barColor
+        self.labelColor = labelColor
+        self.increaseCandleColor = increaseCandleColor
+        self.decreaseCandleColor = decreaseCandleColor
     }
     
     private var yAxisLabels: [String] {
@@ -39,7 +43,7 @@ public struct CandleSticksChart: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct CandleSticksChart_Previews: PreviewProvider {
     static var previews: some View {
         CandleSticksChart(data: [CandleStickData(highestTradedPrice: 200,
                                                     lowestTradedPrice: 100,
