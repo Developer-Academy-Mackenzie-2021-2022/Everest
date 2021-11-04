@@ -12,12 +12,12 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 
 - [Áreas](https://github.com/Developer-Academy-Mackenzie-2021-2022/AreaExample)
     
-    ![Area Chart](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png | width=250)
+    ![Gráfico de área](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png)
     
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
-    ![Gráfico de disperção](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png | width=250)
+    ![Gráfico de disperção](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png)
     
 - Fluxo de Caixa
 - HeatMap
@@ -25,15 +25,15 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - Radar
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
     
-    ![simulator_screenshot_9B396787-16DF-4FC0-A8C6-DDC50E38F65B.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1cf20ee3-e936-45f2-95a0-2d86cfab865d/simulator_screenshot_9B396787-16DF-4FC0-A8C6-DDC50E38F65B.png)
+    ![Gráfico de linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart.png)
     
 - [Setores](https://github.com/Developer-Academy-Mackenzie-2021-2022/SectorExample)
     
-    ![Simulator Screen Shot - iPhone 12 - 2021-11-04 at 16.11.56.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7ed0302-1d17-4edf-b356-658a6cf6e54a/Simulator_Screen_Shot_-_iPhone_12_-_2021-11-04_at_16.11.56.png)
+    ![Gráfico de setores](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/SectorChart.png)
     
 - [Velas](https://github.com/Developer-Academy-Mackenzie-2021-2022/CandleSticksExample)
     
-    ![Simulator Screen Shot - iPhone 12 - 2021-11-04 at 16.05.59.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0f81967f-1ada-4d59-97e2-d9c44d7b0529/Simulator_Screen_Shot_-_iPhone_12_-_2021-11-04_at_16.05.59.png)
+    ![Gráfico de velas](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CandleChart.png)
     
 
 ## Requisitos mínimos
