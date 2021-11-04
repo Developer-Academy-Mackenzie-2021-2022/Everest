@@ -7,16 +7,23 @@
 
 import SwiftUI
 
+
 public struct PieChart: View {    
     public var data: [Double] = []
     public var label: [String] = []
     public var cor: [Color] = []
     public var legenda: [String] = []
     
-    public init(data: [Double] = [0.27, 0.15, 0.18, 0.4],
+    public init(data: [Double] = [0.29, 0.15, 0.18, 0.4],
                 cor:[Color] = [Color(red: 245 / 255, green: 69 / 255, blue: 79 / 255), Color(red: 146 / 255, green: 188 / 255, blue: 117 / 255), Color(red: 244 / 255, green: 150 / 255, blue: 63 / 255), Color(red: 89 / 255, green: 119 / 255, blue: 142 / 255)],
                 legenda:[String] = ["Agro", "Transp.", "Indústria", "Energia"]){
-        self.data = data
+        
+        
+//        let maxValue = findMaxValue(data: data)
+//        for i in 0..<data.count{
+//            self.data.append(DataNormalizer.shared.normalizeByScaleFactor(data[i], scaleFactor: maxValue))
+//        }
+   
         self.label = data.map{ value in "\(value*100)%" }
         self.cor = cor
         self.legenda = legenda
@@ -34,7 +41,7 @@ public struct PieChart: View {
                 { $0 }.reduce(0, +) *
                 360
                 
-               
+                
                 
                 VStack {
                     
@@ -48,48 +55,58 @@ public struct PieChart: View {
                             Text(label[index]).font(.custom("System", size: 17))
                                 .foregroundColor(.white)
                                 .position(getLabelCoordinate(in: geometry.size, for: lastDegree + (currentEndDegree / 2)))
-                                                    
-                                
-                            }
+                            
+                            
+                        }
                     } .frame(width: 300, height: 300, alignment: .center)
-                   
+                    
                     // Desenho das legendas
-                HStack(alignment: .bottom) {
+                    HStack(alignment: .bottom) {
                         ForEach(0..<legenda.count, id: \.self) {
                             Rectangle()
                                 .fill(cor[$0])
                                 .frame(width: 10, height: 10)
-                           
+                            
                             Text(legenda[$0]).font(.subheadline)
-                               
+                            
                             
                         }
                     }                }
-                }
             }
         }
     }
+}
+
+
+
+private func getLabelCoordinate(in geoSize: CGSize, for degree: Double)  -> CGPoint  {
+    let center = CGPoint(x: geoSize.width / 2, y: geoSize.height / 2)
+    let radius = geoSize.width / 3
     
+    let yCoordinate = radius * sin(CGFloat(degree) * (CGFloat.pi / 180))
+    let xCoordinate = radius * cos(CGFloat(degree) * (CGFloat.pi / 180))
     
+    return CGPoint(x: center.x + xCoordinate, y: center.y + yCoordinate)
     
-    private func getLabelCoordinate(in geoSize: CGSize, for degree: Double)  -> CGPoint  {
-        let center = CGPoint(x: geoSize.width / 2, y: geoSize.height / 2)
-        let radius = geoSize.width / 3
-        
-        let yCoordinate = radius * sin(CGFloat(degree) * (CGFloat.pi / 180))
-        let xCoordinate = radius * cos(CGFloat(degree) * (CGFloat.pi / 180))
-        
-        return CGPoint(x: center.x + xCoordinate, y: center.y + yCoordinate)
-        
-    }
-    
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            
-            PieChart()
-            
+}
+
+private func findMaxValue(data: [Double]) -> Double {
+    var max = data[0]
+    for d in data {
+        if d > max {
+            max = d
         }
     }
-    
+    return max
+}
+
+
+struct PieChart_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        PieChart()
+        
+    }
+}
+
 

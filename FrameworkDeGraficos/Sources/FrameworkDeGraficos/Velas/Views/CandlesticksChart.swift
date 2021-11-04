@@ -39,7 +39,7 @@ public struct CandleSticksChart: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct CandleSticksChart_Previews: PreviewProvider {
     static var previews: some View {
         CandleSticksChart(data: [CandleStickData(highestTradedPrice: 200,
                                                     lowestTradedPrice: 100,
