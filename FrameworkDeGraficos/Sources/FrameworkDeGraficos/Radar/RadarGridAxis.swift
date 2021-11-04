@@ -27,6 +27,6 @@ struct RadarGridAxis: Shape {
 struct RadarGridAxis_Previews: PreviewProvider {
     static var previews: some View {
         RadarGridAxis(sides: 6, size: 100)
-            .stroke(Color(.red))
+            .stroke(Color(.black))
     }
 }
