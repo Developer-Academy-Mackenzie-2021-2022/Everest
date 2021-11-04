@@ -17,11 +17,17 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
-    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png" height="400" />
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/CashFlowExample" height="400" />
     
-- Fluxo de Caixa
+- [Fluxo de Caixa](https://github.com/Developer-Academy-Mackenzie-2021-2022/CashFlowExample)
+
+        <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CashFlowChart.png" height="400" />
+
 - HeatMap
-- Histograma
+- [Histograma](https://github.com/Developer-Academy-Mackenzie-2021-2022/HistogramExample)
+
+        <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/HistogramChart.png" height="400" />
+
 - Radar
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
         
