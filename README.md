@@ -12,7 +12,7 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 
 - [Áreas](https://github.com/Developer-Academy-Mackenzie-2021-2022/AreaExample)
     
-    ![Gráfico de área](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png)
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png" height="400" />
     
 - Barras
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
@@ -24,16 +24,16 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - Histograma
 - Radar
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
-    
-    ![Gráfico de linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart.png)
+        
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart.png" height="400" />
     
 - [Setores](https://github.com/Developer-Academy-Mackenzie-2021-2022/SectorExample)
     
-    ![Gráfico de setores](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/SectorChart.png)
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/SectorChart.png" height="400" />
     
 - [Velas](https://github.com/Developer-Academy-Mackenzie-2021-2022/CandleSticksExample)
     
-    ![Gráfico de velas](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CandleChart.png)
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CandleChart.png" height="400" />
     
 
 ## Requisitos mínimos
