@@ -17,6 +17,7 @@ struct SquareView: View {
         VStack{
             Text(showNumero ? String(quadrado.valor):"")
                 .frame(width: quadrado.largura, height: quadrado.altura)
+                .font(.system(size: 0.3*quadrado.largura))
         }
         .background(Color.init(hue: 0, saturation: 1, lightness: conversaoDeParametros(escala: escala, valor: quadrado.valor), opacity: 1))
         
@@ -28,7 +29,7 @@ struct SquareView: View {
 struct SquareView_Previews: PreviewProvider {
     static var previews: some View {
         
-        SquareView(quadrado: ModelSquare(valor: 0.0, cor: Color.red, largura: 100.0, altura: 100.0), showNumero: true, escala: 10.0)
+        SquareView(quadrado: ModelSquare(valor: 1000.0, cor: Color.red, largura: 50.0, altura: 50.0), showNumero: true, escala: 100000.0)
             
         }
     }
