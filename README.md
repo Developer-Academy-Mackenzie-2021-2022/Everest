@@ -1,4 +1,4 @@
-![Banner](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f45426ff-21d7-4eac-ae2e-e7c0e78be54c/Untitled.png)
+![Banner](https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/Banner.png)
 
 # Everest
 
