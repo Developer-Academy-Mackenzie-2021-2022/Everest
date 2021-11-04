@@ -22,8 +22,5 @@ let package = Package(
         .target(
             name: "FrameworkDeGraficos",
             dependencies: []),
-        .testTarget(
-            name: "FrameworkDeGraficosTests",
-            dependencies: ["FrameworkDeGraficos"]),
     ]
 )
