@@ -86,7 +86,6 @@ public struct DispersionGraph: View {
                 
                 VStack(alignment: .leading){
                     Text(title)
-                        //.font(.title).multilineTextAlignment(.leading)
                         .font(.title).bold()
                     Spacer()
                     ///linhas dos eixos
@@ -129,7 +128,7 @@ public struct DispersionGraph: View {
                        
                     }
                     Spacer()
-                    VStack(){
+                    VStack{
                         ///legenda
                         ForEach(0..<points.count, id: \.self) { i in
                             HStack{
