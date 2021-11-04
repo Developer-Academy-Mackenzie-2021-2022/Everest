@@ -101,7 +101,7 @@ struct AxisView<Child: View>: View {
     }
 }
 
-struct ContentView_Previews2: PreviewProvider {
+struct AxisView_Previews: PreviewProvider {
     static var previews: some View {
         AxisView(xLabels: ["jan", "fev", "marc", "abr", "maio"], yLabels: ["5000", "4000", "3000", "2000", "1000"]) {
             GeometryReader { proxy in
