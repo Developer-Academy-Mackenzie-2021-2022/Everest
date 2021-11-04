@@ -54,13 +54,13 @@ public struct PieChart: View {
                     } .frame(width: 300, height: 300, alignment: .center)
                    
                     // Desenho das legendas
-                    VStack(alignment: .leading) {
+                HStack(alignment: .bottom) {
                         ForEach(0..<legenda.count, id: \.self) {
                             Rectangle()
                                 .fill(cor[$0])
                                 .frame(width: 10, height: 10)
                            
-                            Text(legenda[$0]).font(.subheadline)
+                            Text(legenda[$0]).font(.subheadline.)
                                
                             
                         }
