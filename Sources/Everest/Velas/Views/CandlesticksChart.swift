@@ -119,6 +119,5 @@ struct CandleSticksChart_Previews: PreviewProvider {
                                                     closeTradedPrice: 150)], xLabels: ["jan", "fev", "mar"])
             .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
             .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/))
-        
     }
 }
