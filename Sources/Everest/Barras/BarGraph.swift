@@ -24,7 +24,7 @@ public struct BarChart: View {
         
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
@@ -56,9 +56,9 @@ public struct BarChart: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-
+                                
                                 SingleGraphView(colorSingleBar: Color.color2, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 0, valueSingleBar: barValuesOne[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
-
+                                
                             }
                         }
                     }
@@ -87,7 +87,7 @@ public struct BarChart2: View {
         
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
@@ -118,9 +118,9 @@ public struct BarChart2: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-
+                                
                                 StackedGraphView(colorBarOne: Color.color7, colorBarTwo: Color.color1, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 5, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
-
+                                
                             }
                         }
                     }
@@ -151,7 +151,7 @@ public struct BarChart3: View {
         
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
@@ -178,9 +178,9 @@ public struct BarChart3: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-
+                                
                                 SideGraphView(colorBarOne: Color.color6, colorBarTwo: Color.color5, colorLabel: .black, textLabelOne: labelValuesOne[$0], textLabelTwo: labelValuesTwo[$0], cornerRadiusBar: 0, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count))
-
+                                
                             }
                         }
                     }
@@ -204,11 +204,11 @@ public struct BarChart4: View {
         self.titleBarGraph = titleBarGraph
         self.barValuesOne = barValuesOne
         self.labelValuesOne = labelValuesOne
-
+        
         
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
@@ -238,9 +238,9 @@ public struct BarChart4: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-
+                                
                                 SingleGraphView(colorSingleBar: Color.color5, colorLabel: .black, textLabel: "", cornerRadiusBar: 20, valueSingleBar: barValuesOne[$0], widthBar: (width - 120) / CGFloat(barValuesOne.count))
-
+                                
                             }
                         }
                     }
@@ -258,7 +258,7 @@ public struct BarChart5: View {
     var barValuesTwo: [CGFloat]
     var barValuesThree: [CGFloat]
     //Palavras ou letras para a primeira e segunda barra
-
+    
     public init (
         titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90], barValuesTwo: [CGFloat] = [100, 50, 40 , 30, 10], barValuesThree: [CGFloat] = [10, 40, 30 , 20, 100]
     ){
@@ -269,7 +269,7 @@ public struct BarChart5: View {
         
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
             let height = geometry.size.height / 2
@@ -296,9 +296,9 @@ public struct BarChart5: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-
+                                
                                 SideGraphView3(colorBarOne: Color.color4, colorBarTwo: Color.color1, colorBarThree: Color.color3, colorLabel: .black, textLabelOne: "\(Int(barValuesOne[$0]))", textLabelTwo: "\(Int(barValuesTwo[$0]))", textLabelThree: "\(Int(barValuesThree[$0]))", cornerRadiusBar: 3, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], valueBarThree: barValuesThree[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count + barValuesThree.count ))
-
+                                
                             }
                         }
                     }
