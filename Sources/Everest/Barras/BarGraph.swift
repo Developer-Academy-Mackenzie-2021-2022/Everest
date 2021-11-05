@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Struct para mostrar o SingleGraph
-struct ContentView: View {
+struct BarChart: View {
     var titleBarGraph: String = "Gráfico de barras simples"
     //valores para a barra
     var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
@@ -46,7 +46,9 @@ struct ContentView: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SingleGraphView(colorSingleBar: Color.color1, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 0, valueSingleBar: barValuesOne[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+
+                                SingleGraphView(colorSingleBar: Color.color2, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 0, valueSingleBar: barValuesOne[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+
                             }
                         }
                     }
@@ -57,7 +59,7 @@ struct ContentView: View {
 }
 
 // Struct para mostrar o StackedGraph
-struct ContentView2: View {
+struct BarChart2: View {
     var titleBarGraph: String = "Gráfico de barras empilhada"
     //valores para a primeira e segunda barra
     var barValuesOne: [CGFloat] = [80, 88, 70 , 97, 65]
@@ -95,7 +97,9 @@ struct ContentView2: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                StackedGraphView(colorBarOne: Color.color2, colorBarTwo: Color.color3, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 5, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+
+                                StackedGraphView(colorBarOne: Color.color7, colorBarTwo: Color.color1, colorLabel: .black, textLabel: labelValuesOne[$0], cornerRadiusBar: 5, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count))
+
                             }
                         }
                     }
@@ -106,7 +110,7 @@ struct ContentView2: View {
 }
 
 // Struct para mostrar o SideGraph
-struct ContentView3: View {
+struct BarChart3: View {
     var titleBarGraph: String = "Gráfico de barras lado a lado"
     //valores para a primeira e segunda barra
     var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
@@ -141,7 +145,9 @@ struct ContentView3: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SideGraphView(colorBarOne: Color.color4, colorBarTwo: Color.color5, colorLabel: .black, textLabelOne: labelValuesOne[$0], textLabelTwo: labelValuesTwo[$0], cornerRadiusBar: 0, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count))
+
+                                SideGraphView(colorBarOne: Color.color6, colorBarTwo: Color.color5, colorLabel: .black, textLabelOne: labelValuesOne[$0], textLabelTwo: labelValuesTwo[$0], cornerRadiusBar: 0, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count))
+
                             }
                         }
                     }
@@ -152,7 +158,7 @@ struct ContentView3: View {
 }
 
 
-struct ContentView4: View {
+struct BarChart4: View {
     var titleBarGraph: String = "Gráfico de barras simples"
     //valores para a barra
     var barValuesOne: [CGFloat] = [100 , 44, 59 , 80, 49, 87, 99, 27]
@@ -188,7 +194,9 @@ struct ContentView4: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SingleGraphView(colorSingleBar: Color.color6, colorLabel: .black, textLabel: "", cornerRadiusBar: 20, valueSingleBar: barValuesOne[$0], widthBar: (width - 120) / CGFloat(barValuesOne.count))
+
+                                SingleGraphView(colorSingleBar: Color.color5, colorLabel: .black, textLabel: "", cornerRadiusBar: 20, valueSingleBar: barValuesOne[$0], widthBar: (width - 120) / CGFloat(barValuesOne.count))
+
                             }
                         }
                     }
@@ -199,7 +207,7 @@ struct ContentView4: View {
 }
 
 // Struct para mostrar o SideGraph
-struct ContentView5: View {
+struct BarChart5: View {
     var titleBarGraph: String = "Gráfico de barras lado a lado"
     //valores para a primeira e segunda barra
     var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
@@ -235,7 +243,9 @@ struct ContentView5: View {
                     VStack {
                         HStack(alignment: .bottom, spacing: 10) {
                             ForEach(0..<barValuesOne.count, id: \.self) {
-                                SideGraphView3(colorBarOne: Color.color4, colorBarTwo: Color.color1, colorBarThree: Color.color2, colorLabel: .black, textLabelOne: "\(Int(barValuesOne[$0]))", textLabelTwo: "\(Int(barValuesTwo[$0]))", textLabelThree: "\(Int(barValuesThree[$0]))", cornerRadiusBar: 3, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], valueBarThree: barValuesThree[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count + barValuesThree.count ))
+
+                                SideGraphView3(colorBarOne: Color.color4, colorBarTwo: Color.color1, colorBarThree: Color.color3, colorLabel: .black, textLabelOne: "\(Int(barValuesOne[$0]))", textLabelTwo: "\(Int(barValuesTwo[$0]))", textLabelThree: "\(Int(barValuesThree[$0]))", cornerRadiusBar: 3, valueBarOne: barValuesOne[$0], valueBarTwo: barValuesTwo[$0], valueBarThree: barValuesThree[$0], widthBar: (width - 100) / CGFloat(barValuesOne.count + barValuesTwo.count + barValuesThree.count ))
+
                             }
                         }
                     }
@@ -245,13 +255,13 @@ struct ContentView5: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct BarChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-        ContentView2()
-        ContentView3()
-        ContentView4()
-        ContentView5()
+        BarChart()
+        BarChart2()
+        BarChart3()
+        BarChart4()
+        BarChart5()
     }
     
 }
