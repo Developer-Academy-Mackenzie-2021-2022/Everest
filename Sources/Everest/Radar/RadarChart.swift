@@ -46,8 +46,8 @@ public struct RadarChart: View {
                 
                 ForEach(0..<data.count) {
                     RadarLine(data: data[$0])
-                        .stroke(colors[$0], lineWidth: 2)
-                        .background(RadarLine(data: data[$0]).fill(colors[$0].opacity(0.33)))
+                        .stroke(colors[($0)%colors.count], lineWidth: 2)
+                        .background(RadarLine(data: data[$0]).fill(colors[($0)%colors.count].opacity(0.33)))
                         .frame(width: size, height: size, alignment: .center)
                 }
                 
