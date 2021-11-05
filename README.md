@@ -14,7 +14,9 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
     
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/AreaChart.png" height="400" />
     
-- Barras
+- [Barras](https://github.com/Developer-Academy-Mackenzie-2021-2022/BarChartExemple)
+    
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/BarChart.png" height="400" />
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png" height="400" />
@@ -34,7 +36,7 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
     
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
         
-    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart.png" height="400" />
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart2.png" height="400" />
     
 - [Setores](https://github.com/Developer-Academy-Mackenzie-2021-2022/SectorExample)
     
