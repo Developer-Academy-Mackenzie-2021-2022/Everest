@@ -26,9 +26,12 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - HeatMap
 - [Histograma](https://github.com/Developer-Academy-Mackenzie-2021-2022/HistogramExample)
 
-    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/HistogramChart.png" height="400" />
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/RadarChart.png" height="400" />
 
-- Radar
+- [Radar](https://github.com/Developer-Academy-Mackenzie-2021-2022/RadarExample)
+
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/HistogramChart.png" height="400" />
+    
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
         
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart.png" height="400" />
