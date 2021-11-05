@@ -17,6 +17,7 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 - [Barras](https://github.com/Developer-Academy-Mackenzie-2021-2022/BarChartExemple)
     
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/BarChart.png" height="400" />
+    
 - [Dispersão](https://github.com/Developer-Academy-Mackenzie-2021-2022/DispersionExample)
     
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/DispersionChart.png" height="400" />
@@ -25,17 +26,18 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CashFlowChart.png" height="400" />
 
-- [HeatMap](https://github.com/Developer-Academy-Mackenzie-2021-2022/HeatmapExample)
+- [Heatmap](https://github.com/Developer-Academy-Mackenzie-2021-2022/HeatmapExample)
 
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/Everest/blob/feature/README/ReadMeFiles/HeatMap.png" height="400" />
+    
 - [Histograma](https://github.com/Developer-Academy-Mackenzie-2021-2022/HistogramExample)
 
-    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/RadarChart.png" height="400" />
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/HistogramChart.png" height="400" />    
 
 - [Radar](https://github.com/Developer-Academy-Mackenzie-2021-2022/RadarExample)
 
-    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/HistogramChart.png" height="400" />
-    
+    <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/RadarChart.png" height="400" />
+
 - [Linhas](https://github.com/Developer-Academy-Mackenzie-2021-2022/LinesExample)
         
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/LineChart2.png" height="400" />
