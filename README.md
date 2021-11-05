@@ -66,7 +66,8 @@ Após isso é possível ir em "Packages" e selecionar "Update Package Versions".
 
 Caso você não possua um arquivo `Package.swift` , crie um e adicione o `.package` a URL seguir.
 
-`import PackageDescription
+```swift 
+import PackageDescription
 
 let package = Package(
     ...
@@ -74,7 +75,8 @@ let package = Package(
         .package(url: "https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4", "1.0.0")
     ],
     ...
-)`
+)
+```
 
 ## Licença
 
