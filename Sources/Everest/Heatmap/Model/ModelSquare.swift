@@ -13,7 +13,6 @@ struct ModelSquare {
     var cor: Color
     var largura: Double
     var altura: Double
-    var retangulo = Rectangle()
     
 }
 
