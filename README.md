@@ -25,7 +25,7 @@ Esse framework foi desenvolvido para facilitar a criação de gráficos utilizan
 
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/CashFlowChart.png" height="400" />
 
-- HeatMap
+- [HeatMap](https://github.com/Developer-Academy-Mackenzie-2021-2022/HeatmapExample)
 - [Histograma](https://github.com/Developer-Academy-Mackenzie-2021-2022/HistogramExample)
 
     <img src="https://github.com/Developer-Academy-Mackenzie-2021-2022/NC4/blob/feature/README/ReadMeFiles/RadarChart.png" height="400" />
