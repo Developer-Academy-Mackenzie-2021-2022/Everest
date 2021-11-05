@@ -10,10 +10,10 @@ struct RadarGridView: View {
             ForEach((1...gridSize), id: \.self) {
                 if $0 == gridSize {
                     RegularPolygon(sides: sides, size: size*Double($0)/Double(gridSize))
-                        .stroke(.black)
+                        .stroke(Color.black)
                 } else {
                     RegularPolygon(sides: sides, size: size*Double($0)/Double(gridSize))
-                        .stroke(.black.opacity(0.5))
+                        .stroke(Color.black.opacity(0.5))
                 }
             }
 //            ForEach((0..<sides), id: \.self){
