@@ -42,7 +42,7 @@ public struct RadarChart: View {
                 
                 // Lines
                 RadarGridAxis(sides: data[0].count, size: size)
-                    .stroke(.black)
+                    .stroke(Color.black)
                 
                 ForEach(0..<data.count) {
                     RadarLine(data: data[$0])

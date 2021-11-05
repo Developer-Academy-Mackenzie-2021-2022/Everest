@@ -24,57 +24,59 @@ public struct HeatmapGraph: View {
     public var body: some View {
         let escala = maiorNumeroDaMatriz(matriz: matriz)
         let normalizador = (matriz.count>matriz[0].count ? matriz.count+1:matriz[0].count+1)
-        let screenWidth = UIScreen.main.bounds.size.width * 0.8
         
         
-        VStack{
-            HStack{
-                
-                Text(String(0.0))
-                    .padding(.leading)
-                Spacer()
-                Text(String(escala))
-                    .padding(.trailing)
-                
-            }
-            Rectangle()
-                .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.3, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.5, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.7, opacity: 1)]), startPoint: .trailing, endPoint: .leading))
-                .frame(width:(screenWidth*(12/11)) , height:screenWidth/(Double(normalizador)*2))
-            
+        GeometryReader { proxy1 in
+            let screenWidth = proxy1.size.width * 0.8
             VStack{
-                
-                ForEach((0 ..<  matriz.count), id:\.self){ i in
+                HStack{
                     
-                    HStack(){
-                        Text(legendaColuna[i])
-                            .frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
+                    Text(String(0.0))
+                        .padding(.leading)
+                    Spacer()
+                    Text(String(escala))
+                        .padding(.trailing)
+                    
+                }
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [.init(hue: 0, saturation: 1, lightness: 0.3, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.5, opacity: 1),.init(hue: 0, saturation: 1, lightness: 0.7, opacity: 1)]), startPoint: .trailing, endPoint: .leading))
+                    .frame(width:(screenWidth*(12/11)) , height:screenWidth/(Double(normalizador)*2))
+                
+                VStack{
+                    
+                    ForEach((0 ..<  matriz.count), id:\.self){ i in
                         
-                        ForEach((0 ..< matriz[i].count), id:\.self){ j in
+                        HStack(){
+                            Text(legendaColuna[i])
+                                .frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
                             
-                            GeometryReader { geometry in
-                                SquareView(
-                                    quadrado: ModelSquare(valor: matriz[i][j], cor: Color.red, largura: screenWidth/Double(normalizador), altura: screenWidth/Double(normalizador)),showNumero: showNumero, escala: escala)
+                            ForEach((0 ..< matriz[i].count), id:\.self){ j in
                                 
-                            }.frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
+                                GeometryReader { geometry in
+                                    SquareView(
+                                        quadrado: ModelSquare(valor: matriz[i][j], cor: Color.red, largura: screenWidth/Double(normalizador), altura: screenWidth/Double(normalizador)),showNumero: showNumero, escala: escala)
+                                    
+                                }.frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
+                            }
+                        }
+                        
+                    }
+                    
+                    HStack{
+                        
+                        Text("").frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
+                        
+                        ForEach(legendaLinha, id:\.self){ legenda in
+                            Text(legenda)
+                                .rotationEffect(Angle(degrees: -90))
+                                .frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
+                            
                         }
                     }
                     
                 }
                 
-                HStack{
-                    
-                    Text("").frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
-                    
-                    ForEach(legendaLinha, id:\.self){ legenda in
-                        Text(legenda)
-                            .rotationEffect(Angle(degrees: -90))
-                            .frame(width: screenWidth/Double(normalizador), height: screenWidth/Double(normalizador))
-                        
-                    }
-                }
-                
             }
-            
         }
         
         
@@ -93,7 +95,7 @@ public struct HeatmapGraph: View {
 }
 
 
-public struct HeatmapGraph_Previews: PreviewProvider {
+struct HeatmapGraph_Previews: PreviewProvider {
     static var previews: some View {
         HeatmapGraph(matriz: [[30,15,21,10], [28,2,14,15], [10,3,8,11]], showNumero: true, legendaColuna: ["roberto","Renatinho","Claudio","João"],legendaLinha: ["Cachorro","gato","peixe","Avestrus"])
     }
