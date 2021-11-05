@@ -33,8 +33,8 @@ struct CandleStickAxis<Child: View>: View {
         
         GeometryReader { proxy in
             HStack {
-                let multiplierX: CGFloat = (1/CGFloat(xLabels.count))
-                let multiplierY: CGFloat = (1/CGFloat(yLabels.count))
+                let multiplierX: CGFloat = (1/CGFloat(xLabels.count-1))
+                let multiplierY: CGFloat = (1/CGFloat(yLabels.count-1))
                 
                 //MARK: Labels do eixo Y
                 HStack(alignment: .top) {
@@ -87,9 +87,9 @@ struct CandleStickAxis<Child: View>: View {
                     HStack {
                         GeometryReader { proxy in
                             
-                            ForEach(1..<(xLabels.count+1)) { i in
+                            ForEach(0..<(xLabels.count)) { i in
                                 
-                                let label: String = xLabels[i-1]
+                                let label: String = xLabels[i]
                                 let xPosition = (proxy.size.width*multiplierX) * CGFloat(i)
                                 Text("\(label)")
                                     .onAppear(perform: {
