@@ -8,27 +8,20 @@
 import SwiftUI
 
 struct Bar: View {
-    @State var color: Color
-    var colorLabel: Color
-    var textLabel: String
-
-    var value: CGFloat
-    var width: CGFloat
+    @State public var color: Color
+    public var value: CGFloat
+    public var width: CGFloat
     
     var body: some View {
         HStack(alignment: .bottom){
             VStack {
-                Text(textLabel)
-                    .font(.caption)
-                    .foregroundColor(colorLabel)
                 ZStack(alignment: .bottom){
                     Rectangle()
-                        .fill(color)
-                        .frame(width: width, height: value)
+                        .fill(self.color)
+                        .frame(width: self.width, height: self.value)
                 }
                 
             }
         }
     }
 }
-
