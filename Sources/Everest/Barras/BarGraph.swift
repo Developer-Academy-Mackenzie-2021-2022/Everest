@@ -8,12 +8,22 @@
 import SwiftUI
 
 // Struct para mostrar o SingleGraph
-struct BarChart: View {
-    var titleBarGraph: String = "Gráfico de barras simples"
+public struct BarChart: View {
+    var titleBarGraph: String
     //valores para a barra
-    var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
+    var barValuesOne: [CGFloat]
     //Palavras ou letras para a barra
-    var labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
+    var labelValuesOne: [String]
+    
+    public init (
+        titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90], labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
+    ){
+        self.titleBarGraph = titleBarGraph
+        self.barValuesOne = barValuesOne
+        self.labelValuesOne = labelValuesOne
+        
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
@@ -59,13 +69,24 @@ struct BarChart: View {
 }
 
 // Struct para mostrar o StackedGraph
-struct BarChart2: View {
-    var titleBarGraph: String = "Gráfico de barras empilhada"
+public struct BarChart2: View {
+    var titleBarGraph: String
     //valores para a primeira e segunda barra
-    var barValuesOne: [CGFloat] = [80, 88, 70 , 97, 65]
-    var barValuesTwo: [CGFloat] = [50, 34, 45 , 30, 10]
+    var barValuesOne: [CGFloat]
+    var barValuesTwo: [CGFloat]
     //Palavras ou letras para a barra
-    var labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
+    var labelValuesOne: [String]
+    
+    public init (
+        titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [80, 88, 70 , 97, 65], barValuesTwo: [CGFloat] = [50, 34, 45 , 30, 10], labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
+    ){
+        self.titleBarGraph = titleBarGraph
+        self.barValuesOne = barValuesOne
+        self.barValuesTwo = barValuesTwo
+        self.labelValuesOne = labelValuesOne
+        
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
@@ -110,14 +131,26 @@ struct BarChart2: View {
 }
 
 // Struct para mostrar o SideGraph
-struct BarChart3: View {
-    var titleBarGraph: String = "Gráfico de barras lado a lado"
+public struct BarChart3: View {
+    var titleBarGraph: String
     //valores para a primeira e segunda barra
-    var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
-    var barValuesTwo: [CGFloat] = [100, 50, 40 , 30, 10]
+    var barValuesOne: [CGFloat]
+    var barValuesTwo: [CGFloat]
     //Palavras ou letras para a primeira e segunda barra
-    var labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
-    var labelValuesTwo: [String] = ["E", "D", "P", "B", "A"]
+    var labelValuesOne: [String]
+    var labelValuesTwo: [String]
+    
+    public init (
+        titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90], barValuesTwo: [CGFloat] = [50, 34, 45 , 30, 10], labelValuesOne: [String] = ["A", "B", "C", "D", "E"], labelValuesTwo: [String] = ["E", "D", "P", "B", "A"]
+    ){
+        self.titleBarGraph = titleBarGraph
+        self.barValuesOne = barValuesOne
+        self.barValuesTwo = barValuesTwo
+        self.labelValuesOne = labelValuesOne
+        self.labelValuesTwo = labelValuesTwo
+        
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
@@ -158,12 +191,23 @@ struct BarChart3: View {
 }
 
 
-struct BarChart4: View {
-    var titleBarGraph: String = "Gráfico de barras simples"
+public struct BarChart4: View {
+    var titleBarGraph: String
     //valores para a barra
-    var barValuesOne: [CGFloat] = [100 , 44, 59 , 80, 49, 87, 99, 27]
+    var barValuesOne: [CGFloat]
     //Palavras ou letras para a barra
-    var labelValuesOne: [String] = []
+    var labelValuesOne: [String]
+    
+    public init (
+        titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [100 , 44, 59 , 80, 49, 87, 99, 27], labelValuesOne: [String] = []
+    ){
+        self.titleBarGraph = titleBarGraph
+        self.barValuesOne = barValuesOne
+        self.labelValuesOne = labelValuesOne
+
+        
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
@@ -207,15 +251,24 @@ struct BarChart4: View {
 }
 
 // Struct para mostrar o SideGraph
-struct BarChart5: View {
-    var titleBarGraph: String = "Gráfico de barras lado a lado"
+public struct BarChart5: View {
+    var titleBarGraph: String
     //valores para a primeira e segunda barra
-    var barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90]
-    var barValuesTwo: [CGFloat] = [100, 50, 40 , 30, 10]
-    var barValuesThree: [CGFloat] = [10, 40, 30 , 20, 100]
+    var barValuesOne: [CGFloat]
+    var barValuesTwo: [CGFloat]
+    var barValuesThree: [CGFloat]
     //Palavras ou letras para a primeira e segunda barra
-    var labelValuesOne: [String] = ["A", "B", "C", "D", "E"]
-    var labelValuesTwo: [String] = ["E", "D", "P", "B", "A"]
+
+    public init (
+        titleBarGraph: String = "Gráfico de barras simples", barValuesOne: [CGFloat] = [50, 60, 70 , 80, 90], barValuesTwo: [CGFloat] = [100, 50, 40 , 30, 10], barValuesThree: [CGFloat] = [10, 40, 30 , 20, 100]
+    ){
+        self.titleBarGraph = titleBarGraph
+        self.barValuesOne = barValuesOne
+        self.barValuesTwo = barValuesTwo
+        self.barValuesThree = barValuesThree
+        
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width - 40
