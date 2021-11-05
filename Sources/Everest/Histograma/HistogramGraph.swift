@@ -98,7 +98,6 @@ public struct Histograma: View {
 
 // Preview do Gráfico com um exemplo:
 
-/*
 struct Histograma_Previews: PreviewProvider {
     static var previews: some View {
         Histograma(data: [50, 30, 40, 70, 10, 80, 60],
@@ -114,4 +113,4 @@ struct Histograma_Previews: PreviewProvider {
         )
     }
 }
-*/
+
