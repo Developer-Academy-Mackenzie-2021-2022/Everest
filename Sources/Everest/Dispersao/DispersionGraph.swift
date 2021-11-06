@@ -91,8 +91,9 @@ public struct DispersionGraph: View {
                     ///linhas dos eixos
                     ZStack(alignment: .leading){
                         Text(eixoY)
-                            .position(x: 50+30, y: centerY-max-20)
+                            .position(x: 50, y: centerY-max-40)
                             .font(.subheadline)
+                            .padding(.leading)
                         Text(eixoX)
                             .position(x: width-20, y: centerY-20)
                             .font(.subheadline)
@@ -113,16 +114,16 @@ public struct DispersionGraph: View {
                             ForEach (0..<5, id: \.self) { i in
                                 let auxX = CGFloat(i)*CGFloat((width-(max/2))/4)+CGFloat(50)
                                 let value = Float(minValueX)+(Float(maxValueX-minValueX)/4)*Float(i)
-                                Text(String(format:"%.0f",value))
+                                Text(String(format:"%.1f",value))
                                     .position(x: CGFloat(auxX), y: centerY + CGFloat(15))
-                                    .font(.subheadline)
+                                    .font(.system(size: 12))
                             }
                             ForEach (0..<5, id: \.self) { i in
                                 let auxY = centerY-CGFloat(i)*CGFloat((max+50)/5)
                                 let value = Float(minValueY)+(Float(maxValueY-minValueY)/4)*Float(i)
-                                Text(String(format:"%.0f",value))
+                                Text(String(format:"%.1f",value))
                                     .position(x:50-20, y:CGFloat(auxY))
-                                    .font(.subheadline)
+                                    .font(.system(size: 12))
                             }
                         }
                        
@@ -149,15 +150,14 @@ public struct DispersionGraph: View {
 struct DispersionGraph_Previews: PreviewProvider {
     static var previews: some View {
         let colors: [Color] = [Color.blue, Color.pink, Color.green]
-        let points: [[CGPoint]] = [[CGPoint(x: 200, y: 300),
-                                         CGPoint(x: 400, y: -300),
-                                         CGPoint(x: 400, y: 800),
-                                         CGPoint(x: 800, y: 700)],
-                                  [CGPoint(x: 500, y: 200),
-                                        CGPoint(x: 600, y: 400),
-                                        CGPoint(x: 100, y: 800),
-                                        CGPoint(x: 300, y: 500)]]
-        
+        let points: [[CGPoint]] = [[CGPoint(x: 20, y: 30),
+                                         CGPoint(x: 40, y: 30),
+                                         CGPoint(x: 40, y: 80),
+                                         CGPoint(x: 80, y: 70)],
+                                  [CGPoint(x: 50, y: 20),
+                                        CGPoint(x: 60, y: 40),
+                                        CGPoint(x: 10, y: 80),
+                                        CGPoint(x: 30, y: 50)]]
         DispersionGraph(points,colors: colors)
     }
 }
